@@ -1,0 +1,46 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 48px;
+  background-color: #231942;
+  box-sizing: border-box;
+}
+
+.navLogo {
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.navLogo:hover {
+  opacity: 0.85;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 220px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.navLink:hover {
+  opacity: 0.85;
+}

@@ -1,16 +1,16 @@
 import './App.css';
-import { NavBar } from './components/NavBar';
-import { Home } from './components/Home/Home';
-import { Footer } from './components/Footer';
+import { NavBar } from './components/NavBar/NavBar';
+import { Home } from './components/Pages/Home/Home';
+import { Footer } from './components/Footer/Footer';
 
-function App() {
+export function App() {
   return (
     <div className="App">
       <NavBar />
-      <Home />
+      <main className="mainContent">
+        <Home />
+      </main>
       <Footer />
     </div>
   );
 }
-
-export default App;
