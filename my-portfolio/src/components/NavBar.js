@@ -1,6 +1,6 @@
-import icon from "./IconNavBar";
+import { icon } from "./IconNavBar";
 
-function NavBar() {
+export function NavBar() {
     return (
         <div>
             <nav>
@@ -15,5 +15,3 @@ function NavBar() {
         </div>
     )
 }
-
-export default NavBar;

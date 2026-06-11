@@ -20,7 +20,6 @@ export function Footer() {
         <div style={footerStyle} className="footer">
             <footer>
                 <p>Design & Developed by Flavio Fernandez</p>
-                {/* Fixed a quick typo on "Copyright" and removed the empty <em> tag */}
                 <p>&copy; Copyright {year}</p>
                 <p><a style={linkStyle} href="mailto:newEmail@gmail.com">newEmail@gmail.com</a></p>
             </footer>
