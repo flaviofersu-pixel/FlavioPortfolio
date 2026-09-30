@@ -1,16 +1,17 @@
-import './App.css';
-import { NavBar } from './components/NavBar/NavBar';
-import { Home } from './components/Pages/Home/Home';
-import { Footer } from './components/Footer/Footer';
+import { Footer } from "./components/Footer/Footer";
+import { NavBar } from "./components/NavBar/NavBar";
+import { Home } from "./components/Pages/Home/Home";
 
 export function App() {
   return (
-    <div className="App">
+    <div className="flex min-h-screen flex-col bg-night">
       <NavBar />
-      <main className="mainContent">
+      <main className="flex-1">
         <Home />
       </main>
       <Footer />
     </div>
   );
 }
+
+export default App;

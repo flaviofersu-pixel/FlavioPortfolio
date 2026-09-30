@@ -1,25 +1,39 @@
-*,
-*::before,
-*::after {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply overflow-x-hidden bg-night font-sans text-grape-300 antialiased;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-white;
+  }
 }
 
-html,
-body {
-  width: 100%;
-  overflow-x: hidden;
+@layer utilities {
+  .bg-pixel-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
 }
 
-body {
-  margin: 0;
-  font-family: 'Pixelify Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+dialog::backdrop {
+  background: rgba(8, 6, 18, 0.75);
+  backdrop-filter: blur(8px);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media print {
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
 }

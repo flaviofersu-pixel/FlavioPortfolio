@@ -1,8 +1,19 @@
+import { About } from "../../sections/About";
+import { Contact } from "../../sections/Contact";
+import { Experience } from "../../sections/Experience";
+import { Hero } from "../../sections/Hero";
+import { Projects } from "../../sections/Projects";
+import { Skills } from "../../sections/Skills";
+
 export function Home() {
-    return (
-    <div className="homePage">
-        <h1>Hi there!</h1>
-        <p>I'M <span className="namePurple">FLAVIO</span></p>   
-    </div>
-    );
+  return (
+    <>
+      <Hero />
+      <About />
+      <Projects />
+      <Experience />
+      <Skills />
+      <Contact />
+    </>
+  );
 }
