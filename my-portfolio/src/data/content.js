@@ -52,9 +52,9 @@ export const skillGroups = [
 ];
 
 export const languages = [
-  { name: "Spanish", level: "Native" },
-  { name: "English", level: "C1" },
-  { name: "Dutch", level: "C1" },
+  { name: "Spanish" },
+  { name: "English" },
+  { name: "Dutch" },
 ];
 
 export const lucastarsImages = [

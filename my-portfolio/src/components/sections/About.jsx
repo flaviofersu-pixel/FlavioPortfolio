@@ -21,7 +21,6 @@ export function About() {
                     className="rounded-full border border-grape-700 bg-grape-900 px-4 py-2 text-sm text-white lg:text-base"
                   >
                     {language.name}
-                    <span className="ml-2 text-gold">{language.level}</span>
                   </li>
                 ))}
               </ul>
