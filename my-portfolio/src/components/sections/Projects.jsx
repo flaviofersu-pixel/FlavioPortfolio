@@ -1,6 +1,6 @@
 import { projects } from "../../data/content";
 import { LucaStarsDemo } from "../LucaStarsDemo/LucaStarsDemo";
-import { ModelViewer } from "../ModelViewer";
+import { ModelGallery } from "../ModelViewer";
 import { SectionHeader } from "../SectionHeader";
 
 export function Projects() {
@@ -51,12 +51,8 @@ export function Projects() {
               key={project.id}
               className="overflow-hidden rounded-xl border border-grape-700 bg-grape-950 text-left"
             >
-              {project.model ? (
-                <ModelViewer
-                  src={project.model.src}
-                  alt={project.model.alt}
-                  className="block h-80 w-full bg-grape-900"
-                />
+              {project.models ? (
+                <ModelGallery models={project.models} />
               ) : project.image ? (
                 <img
                   src={project.image.src}

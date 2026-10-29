@@ -84,10 +84,18 @@ export const projects = [
       "Tested in the Wokwi simulator",
       "Play/pause, next/previous, and a now-playing screen",
     ],
-    model: {
-      src: "/projects/spotify-gadget.glb",
-      alt: "Interactive 3D model of the Spotify mini remote with its display and three buttons",
-    },
+    models: [
+      {
+        label: "The remote",
+        src: "/projects/spotify-gadget.glb",
+        alt: "Interactive 3D model of the Spotify mini remote with its display and three buttons",
+      },
+      {
+        label: "On an iPhone 16 Pro",
+        src: "/projects/spotify-gadget-iphone.glb",
+        alt: "Interactive 3D model of the Spotify mini remote attached to the back of an iPhone 16 Pro",
+      },
+    ],
   },
   {
     id: "climate-impact-tool",
