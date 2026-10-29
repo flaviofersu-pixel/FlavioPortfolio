@@ -6,7 +6,7 @@ export function Skills() {
     <section id="skills" className="scroll-mt-24 bg-night">
       <div className="w-full px-6 py-20 lg:px-12">
         <SectionHeader index="04" kicker="Stack" title="Technical skills" />
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {skillGroups.map((group) => (
             <article
               key={group.label}

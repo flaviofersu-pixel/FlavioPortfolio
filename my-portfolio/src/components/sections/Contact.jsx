@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { person } from "../../data/content";
 import { ContactForm } from "../ContactForm";
+import { GitHubIcon } from "../GitHubIcon";
 import { LinkedInIcon } from "../LinkedInIcon";
 import { SectionHeader } from "../SectionHeader";
 
@@ -12,7 +13,7 @@ export function Contact() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="text-left">
             <p className="max-w-2xl text-lg leading-relaxed text-grape-300 lg:text-xl">
-              I&apos;m looking for a full stack internship. If you have a role,
+              I&apos;m looking for a full stack internship from February 2027. If you have a role,
               a question, or just want to talk, send a message.
             </p>
             <ul className="mt-8 space-y-4 text-grape-300 lg:text-lg">
@@ -43,6 +44,17 @@ export function Contact() {
                 >
                   <LinkedInIcon size={18} className="text-gold" />
                   LinkedIn profile
+                </a>
+              </li>
+              <li>
+                <a
+                  href={person.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 hover:text-white"
+                >
+                  <GitHubIcon size={18} className="text-gold" />
+                  GitHub profile
                 </a>
               </li>
               <li className="inline-flex items-center gap-3">

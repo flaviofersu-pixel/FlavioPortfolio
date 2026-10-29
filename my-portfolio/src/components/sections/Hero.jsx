@@ -1,5 +1,6 @@
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { person } from "../../data/content";
+import { GitHubIcon } from "../GitHubIcon";
 import { LinkedInIcon } from "../LinkedInIcon";
 
 export function Hero() {
@@ -24,8 +25,8 @@ export function Hero() {
             {person.role}
           </p>
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-grape-300 sm:text-lg lg:text-xl">
-            Looking for an internship where I can contribute to real features,
-            work in a team, and grow as a full stack developer.
+            Looking for an internship from February 2027 where I can build real
+            features in a team and grow as a full stack developer.
           </p>
 
           <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm text-grape-300 lg:text-base">
@@ -60,6 +61,17 @@ export function Hero() {
               >
                 <LinkedInIcon size={16} className="text-gold" />
                 LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href={person.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 transition hover:text-white"
+              >
+                <GitHubIcon size={16} className="text-gold" />
+                GitHub
               </a>
             </li>
           </ul>

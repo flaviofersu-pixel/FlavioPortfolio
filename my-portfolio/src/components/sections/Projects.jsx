@@ -102,23 +102,35 @@ export function Projects() {
           {rest.map((project) => (
             <article
               key={project.id}
-              className="rounded-xl border border-grape-700 bg-grape-950 p-6 text-left"
+              className="overflow-hidden rounded-xl border border-grape-700 bg-grape-950 text-left"
             >
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-                {project.tag}
-              </p>
-              <h3 className="mt-2 font-pixel text-2xl text-white lg:text-3xl">{project.name}</h3>
-              <p className="mt-3 text-grape-300 lg:text-lg">{project.summary}</p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {project.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="rounded-full bg-grape-900 px-3 py-1 text-xs text-grape-300 lg:text-sm"
-                  >
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+              {project.image ? (
+                <img
+                  src={project.image.src}
+                  alt={project.image.alt}
+                  className="aspect-video w-full bg-grape-900 object-cover"
+                />
+              ) : null}
+              <div className="p-6">
+                <p className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
+                  {project.tag}
+                </p>
+                <h3 className="mt-2 font-pixel text-2xl text-white lg:text-3xl">{project.name}</h3>
+                {project.dates ? (
+                  <p className="mt-1 font-mono text-sm text-grape-400">{project.dates}</p>
+                ) : null}
+                <p className="mt-3 text-grape-300 lg:text-lg">{project.summary}</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {project.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="rounded-full bg-grape-900 px-3 py-1 text-xs text-grape-300 lg:text-sm"
+                    >
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </article>
           ))}
         </div>

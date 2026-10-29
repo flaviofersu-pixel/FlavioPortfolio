@@ -8,44 +8,46 @@ export const person = {
   phoneHref: "tel:+31687154687",
   email: "flaviofersu@gmail.com",
   linkedin: "https://www.linkedin.com/in/flavio-fernandez-suarez-0a02a1398/",
+  github: "https://github.com/flaviofersu-pixel",
 };
 
-export const profile = `Second-year Computer Software Engineering student at the Amsterdam University of Applied Sciences (HvA), specializing in full stack development in the Public Lab studio. I'm looking for an internship where I can contribute to real features, work in a team, and grow as a developer. I speak Spanish, English, and Dutch, and I enjoy working in international environments.`;
+export const profile = `Second-year HBO-ICT Software Engineering student at the Amsterdam University of Applied Sciences (HvA), on the full stack profile. I’m looking for an internship from February 2027 where I can build real features in a team. Besides programming, I like working with hardware: Arduino, soldering, and my own home lab. I speak Spanish, English, and Dutch.`;
 
 export const education = {
   school: "Hogeschool van Amsterdam (HvA)",
-  degree: "Bachelor's in Computer Software Engineering",
+  degree: "Bachelor HBO-ICT, Software Engineering",
   dates: "2025 – present",
-  detail: "Public Lab studio, Full Stack profile (currently)",
+  detail: "Public Lab studio, full stack profile",
 };
 
 export const experience = {
-  title: "Student Employee",
-  org: "Community for Participation and Representation",
-  orgNl: "Studentmedewerker Community voor Inspraak en Medezeggenschap",
-  company: "Amsterdam University of Applied Sciences",
-  type: "Part-time",
+  title: "Student Mentor",
+  org: "Amsterdam University of Applied Sciences (HvA)",
+  type: "Part-time job",
   dates: "Sept 2026 – present",
   bullets: [
-    "Mentor first-year Software Engineering students, guiding them through their project work and giving regular feedback",
-    "Teach Git fundamentals (commits, branches, merging) and help students resolve version control problems",
-    "Help students debug and work through technical problems in their projects by asking guiding questions rather than giving the answer",
-    "Strengthen communication and teamwork skills by explaining technical concepts to people at different levels",
+    "Guide first-year Software Engineering students through their project work",
+    "Help them with Git and GitLab (branches, merging, conflicts) and with debugging their code by asking the right questions",
+    "Give feedback on their sprint reviews and project reports",
   ],
 };
 
 export const skillGroups = [
   {
     label: "Frontend",
-    items: ["React.js", "Next.js", "HTML", "CSS", "Tailwind CSS", "JavaScript", "TypeScript"],
+    items: ["React", "Next.js", "JavaScript", "TypeScript", "HTML", "CSS", "Tailwind CSS"],
   },
   {
     label: "Backend & data",
-    items: ["Python", "MySQL"],
+    items: ["REST APIs", "MySQL", "OOP"],
   },
   {
     label: "Tools",
-    items: ["Git"],
+    items: ["Git", "GitLab", "Docker", "Postman"],
+  },
+  {
+    label: "Hardware",
+    items: ["Arduino", "ESP32", "Soldering", "Home lab"],
   },
 ];
 
@@ -92,7 +94,7 @@ export const projects = [
   {
     id: "lucastars",
     name: "LucaStars",
-    tag: "Featured project",
+    tag: "Featured project · School project",
     summary:
       "A digital game store with catalog browsing, deals, a shopping cart, checkout, promo codes, and a user profile with order history.",
     features: [
@@ -104,13 +106,56 @@ export const projects = [
     images: lucastarsImages,
   },
   {
+    id: "spotify-gadget",
+    name: "Spotify mini remote",
+    tag: "Personal hardware project",
+    dates: "2026 – present",
+    summary:
+      "A small Spotify remote built around an ESP32-C3 microcontroller, a Sharp memory display, and three buttons.",
+    features: [
+      "First prototype in C++ (Arduino, PlatformIO)",
+      "Tested in the Wokwi simulator",
+      "Play/pause, next/previous, and a now-playing screen",
+    ],
+    image: {
+      src: "/projects/spotify-gadget.png",
+      alt: "3D render of the Spotify mini remote case",
+    },
+  },
+  {
+    id: "climate-impact-tool",
+    name: "Climate impact tool for Microsoft Teams",
+    tag: "School project · Client: City of Amsterdam",
+    dates: "2026 – present",
+    summary:
+      "Making an existing climate impact tool reusable for other organizations and updating it to current calculation models. I’m one of two full stack developers in a team of five.",
+    features: [
+      "Researching how to build it as a Microsoft Teams app",
+      "Designing and building it with the other developer",
+      "Direct contact with the client through meetings, feedback rounds, and iterations",
+    ],
+  },
+  {
+    id: "angels-treasure",
+    name: "Angel’s Treasure website",
+    tag: "Freelance · Handmade fashion shop, Amsterdam",
+    dates: "2026 – present",
+    summary:
+      "A website for a small handmade fashion shop that currently only sells through Vinted, Depop, and pop-up markets.",
+    features: [
+      "Mid-fi and hi-fi designs",
+      "One-page site in HTML, CSS, and JavaScript",
+      "Product filter and custom order form",
+      "Netlify Forms and Decap CMS so the owner can add products and markets",
+    ],
+  },
+  {
     id: "portfolio",
     name: "Personal portfolio",
     tag: "This site",
     summary:
       "A React and Tailwind CSS portfolio built to present my work, education, and internship profile in one place.",
-    features: ["React 19", "Tailwind CSS", "Responsive layout", "Accessible contact form"],
-    images: [],
+    features: ["React 19", "Vite", "Tailwind CSS", "Responsive layout", "Accessible contact form"],
   },
 ];
 

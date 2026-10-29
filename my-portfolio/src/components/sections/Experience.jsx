@@ -11,13 +11,10 @@ export function Experience() {
             <div>
               <h3 className="font-pixel text-3xl text-white lg:text-4xl">{experience.title}</h3>
               <p className="mt-2 text-grape-300 lg:text-lg">{experience.org}</p>
-              <p className="mt-1 text-sm italic text-grape-400 lg:text-base">{experience.orgNl}</p>
             </div>
             <p className="shrink-0 font-mono text-sm text-gold lg:text-base">{experience.dates}</p>
           </div>
-          <p className="mt-4 text-sm text-grape-300 lg:text-base">
-            {experience.company} · {experience.type}
-          </p>
+          <p className="mt-4 text-sm text-grape-300 lg:text-base">{experience.type}</p>
           <ul className="mt-6 space-y-3 text-grape-300 lg:text-lg">
             {experience.bullets.map((bullet) => (
               <li key={bullet} className="flex gap-3">
