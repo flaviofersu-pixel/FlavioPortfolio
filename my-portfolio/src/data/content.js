@@ -47,6 +47,10 @@ export const skillGroups = [
     label: "Tools",
     items: ["Git"],
   },
+  {
+    label: "Hardware",
+    items: ["Arduino", "ESP32", "C++", "PlatformIO", "Wokwi", "Soldering"],
+  },
 ];
 
 export const languages = [
@@ -88,6 +92,34 @@ export const lucastarsImages = [
   },
 ];
 
+export const angelsTreasureImages = [
+  {
+    src: "/projects/angels-treasure-home.jpg",
+    alt: "Angel's Treasure hi-fi design: pink hero with the next pop-up market and links to Vinted",
+    label: "Home",
+  },
+  {
+    src: "/projects/angels-treasure-shop.jpg",
+    alt: "Angel's Treasure shop section with category filters and product cards linking to Vinted and Depop",
+    label: "Shop",
+  },
+  {
+    src: "/projects/angels-treasure-popups.jpg",
+    alt: "Angel's Treasure pop-up markets section with upcoming dates and locations",
+    label: "Pop-ups",
+  },
+  {
+    src: "/projects/angels-treasure-customs.jpg",
+    alt: "Angel's Treasure custom order form with name, product type, colours, budget and idea",
+    label: "Custom order",
+  },
+  {
+    src: "/projects/angels-treasure-midfi.jpg",
+    alt: "Angel's Treasure mid-fi wireframe with notes explaining each section",
+    label: "Mid-fi",
+  },
+];
+
 export const projects = [
   {
     id: "lucastars",
@@ -102,6 +134,30 @@ export const projects = [
       "User profile with spend totals and order history",
     ],
     images: lucastarsImages,
+  },
+  {
+    id: "angels-treasure",
+    name: "Angel's Treasure",
+    tag: "Freelance · 2026 – present",
+    summary:
+      "A website for a small handmade Jfashion shop from Amsterdam that until now only sold through Vinted, Depop and pop-up markets. I talked with the owner about what she needed, made mid-fi and hi-fi designs, and am building it as a one-page site she can manage herself.",
+    features: [
+      "Mid-fi wireframe first for structure, then a hi-fi design in the shop's own strawberry milk and chocolate style",
+      "Shop with a category filter; every product links to Vinted (NL) or Depop (worldwide)",
+      "Pop-up market calendar and a custom order form, so requests no longer get lost in DMs",
+      "Hosted on Netlify with Netlify Forms and Decap CMS, so the owner can add products and markets herself",
+      "AI helped with the first demo; the real version I build and commit myself",
+    ],
+    images: angelsTreasureImages,
+  },
+  {
+    id: "spotify-remote",
+    name: "Spotify Mini Remote",
+    tag: "Personal hardware project",
+    summary:
+      "A small Spotify remote built on an ESP32-C3 with a Sharp memory display and three buttons, plus a 3D-printed stand that holds my phone, my e-reader and the remote.",
+    features: ["ESP32-C3", "C++", "PlatformIO", "Wokwi simulator", "Sharp memory display", "3D design"],
+    images: [],
   },
   {
     id: "portfolio",

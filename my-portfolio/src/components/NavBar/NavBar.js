@@ -24,7 +24,7 @@ export function NavBar() {
       <nav className="flex w-full items-center px-6 py-4 lg:px-12">
         <a
           href="#home"
-          className="shrink-0 font-pixel text-[36px] font-semibold leading-none text-white transition hover:opacity-85 lg:text-[42px]"
+          className="shrink-0 font-pixel text-[28px] font-semibold leading-none text-white transition hover:opacity-85 lg:text-[32px]"
           onClick={() => setOpen(false)}
         >
           Ff<span className="text-gold">.</span>
@@ -37,9 +37,9 @@ export function NavBar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="flex items-center gap-2 font-pixel text-[25px] text-white transition hover:opacity-85 lg:text-[28px]"
+                  className="flex items-center gap-2 font-pixel text-[17px] text-white transition hover:opacity-85 lg:text-[18px]"
                 >
-                  {Icon ? <Icon size={24} aria-hidden="true" /> : null}
+                  {Icon ? <Icon size={18} aria-hidden="true" /> : null}
                   {link.label}
                 </a>
               </li>
@@ -55,7 +55,7 @@ export function NavBar() {
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? <X size={28} /> : <Menu size={28} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 
@@ -70,10 +70,10 @@ export function NavBar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="flex items-center gap-3 rounded-md px-3 py-3 font-pixel text-[25px] text-white hover:bg-white/5"
+                  className="flex items-center gap-3 rounded-md px-3 py-3 font-pixel text-[18px] text-white hover:bg-white/5"
                   onClick={() => setOpen(false)}
                 >
-                  {Icon ? <Icon size={24} aria-hidden="true" /> : null}
+                  {Icon ? <Icon size={18} aria-hidden="true" /> : null}
                   {link.label}
                 </a>
               </li>
