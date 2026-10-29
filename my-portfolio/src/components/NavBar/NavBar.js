@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { House, User, Presentation, Briefcase, Send, Menu, X } from "lucide-react";
+import { House, User, Presentation, Briefcase, Code, Send, Menu, X } from "lucide-react";
 import { navLinks } from "../../data/content";
 
 const icons = {
@@ -7,6 +7,7 @@ const icons = {
   About: User,
   Projects: Presentation,
   Experience: Briefcase,
+  Skills: Code,
   Contact: Send,
 };
 
