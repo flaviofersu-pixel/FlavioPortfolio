@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { projects } from "../../data/content";
+import { ModelViewer } from "../ModelViewer";
 import { SectionHeader } from "../SectionHeader";
 
 export function Projects() {
@@ -104,7 +105,13 @@ export function Projects() {
               key={project.id}
               className="overflow-hidden rounded-xl border border-grape-700 bg-grape-950 text-left"
             >
-              {project.image ? (
+              {project.model ? (
+                <ModelViewer
+                  src={project.model.src}
+                  alt={project.model.alt}
+                  className="block h-80 w-full bg-grape-900"
+                />
+              ) : project.image ? (
                 <img
                   src={project.image.src}
                   alt={project.image.alt}

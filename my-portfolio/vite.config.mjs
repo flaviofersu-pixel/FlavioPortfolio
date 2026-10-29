@@ -9,6 +9,8 @@ export default defineConfig({
   },
   build: {
     outDir: "build",
+    // model-viewer (three.js) is ~1 MB but lazy-loaded in its own chunk.
+    chunkSizeWarningLimit: 1100,
   },
   test: {
     environment: "jsdom",

@@ -117,9 +117,9 @@ export const projects = [
       "Tested in the Wokwi simulator",
       "Play/pause, next/previous, and a now-playing screen",
     ],
-    image: {
-      src: "/projects/spotify-gadget.png",
-      alt: "3D render of the Spotify mini remote case",
+    model: {
+      src: "/projects/spotify-gadget.glb",
+      alt: "Interactive 3D model of the Spotify mini remote with its display and three buttons",
     },
   },
   {
