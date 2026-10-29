@@ -57,39 +57,6 @@ export const languages = [
   { name: "Dutch" },
 ];
 
-export const lucastarsImages = [
-  {
-    src: "/projects/lucastars-home.png",
-    alt: "LucaStars home page with featured games, best sellers, and latest releases",
-    label: "Home",
-  },
-  {
-    src: "/projects/lucastars-store.png",
-    alt: "LucaStars store with weekend deals and a game catalog",
-    label: "Store",
-  },
-  {
-    src: "/projects/lucastars-product.png",
-    alt: "LucaStars product page for Ambiguous Darkness with gallery and add to cart",
-    label: "Product",
-  },
-  {
-    src: "/projects/lucastars-cart.png",
-    alt: "LucaStars shopping cart with VAT, discounts, and promo codes",
-    label: "Cart",
-  },
-  {
-    src: "/projects/lucastars-checkout.png",
-    alt: "LucaStars checkout with contact details, billing address, and order summary",
-    label: "Checkout",
-  },
-  {
-    src: "/projects/lucastars-profile.png",
-    alt: "LucaStars user profile with total spent and order history",
-    label: "Profile",
-  },
-];
-
 export const projects = [
   {
     id: "lucastars",
@@ -103,7 +70,7 @@ export const projects = [
       "Checkout flow with contact details, billing address, and order summary",
       "User profile with spend totals and order history",
     ],
-    images: lucastarsImages,
+    hint: "This shop is a working mini demo. Add a game to your cart, open the Discount code tab, apply LUCA10, and place an order. Use the full screen button for a bigger view.",
   },
   {
     id: "spotify-gadget",
