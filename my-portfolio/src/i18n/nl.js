@@ -32,9 +32,10 @@ export default {
     next: "Volgend nummer", // review
     play: "Afspelen", // review
     pause: "Pauzeren", // review
-    playing: "Speelt af", // review
-    paused: "Gepauzeerd", // review
-    status: "{state}: {title} van {artist}", // review
+    announcePlaying: "Speelt nu {title} van {artist}", // review
+    announcePaused: "Gepauzeerd", // review
+    announceTrack: "{title} van {artist}", // review
+    listenOnSpotify: "Luister op Spotify", // review
   },
   demo: {
     label: "Interactieve demo van LucaStars", // review

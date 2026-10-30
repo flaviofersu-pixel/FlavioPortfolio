@@ -32,9 +32,10 @@ export default {
     next: "Next track",
     play: "Play",
     pause: "Pause",
-    playing: "Playing",
-    paused: "Paused",
-    status: "{state}: {title} by {artist}",
+    announcePlaying: "Playing {title} by {artist}",
+    announcePaused: "Paused",
+    announceTrack: "{title} by {artist}",
+    listenOnSpotify: "Listen on Spotify",
   },
   demo: {
     label: "LucaStars interactive demo",

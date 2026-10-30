@@ -56,12 +56,13 @@ export const projects = [
   },
 ];
 
-// Songs for the remote's screen. The first one is the track shown in the 3D render.
-// TODO: swap the other two for songs you actually play.
+// Songs for the remote in the hero. url: the track's Spotify link (Share > Copy song link).
+// Without a link, that track only plays visually on the screen. seconds: the track length,
+// only used when Spotify can't load (Spotify reports the real length while it plays).
 export const remoteTracks = [
-  { title: "Blinding Lights", artist: "The Weeknd", seconds: 200 },
-  { title: "[TODO: song 2]", artist: "[TODO: artist]", seconds: 242 },
-  { title: "[TODO: song 3]", artist: "[TODO: artist]", seconds: 178 },
+  { title: "Love Me", artist: "Elvis Presley", url: "https://open.spotify.com/track/2DQ5r0crvortwaNRYcninK", seconds: 167 },
+  { title: "Locos - Live", artist: "León Larregui", url: "https://open.spotify.com/track/3c8SCYG8XwNHxSvfIj3jgg", seconds: 212 },
+  { title: "A Love Like Her", artist: "BluNites", url: "https://open.spotify.com/track/6WbxpUUZR0gw4Kr4FtUjbH", seconds: 207 },
 ];
 
 export const navLinks = [

@@ -28,12 +28,12 @@ test("switching language keeps the remote screen where it was and updates the pa
   render(<App />);
 
   fireEvent.click(screen.getByRole("button", { name: "Next track" }));
-  expect(screen.getByText("[TODO: song 2]")).toBeInTheDocument();
+  expect(screen.getByText("Locos - Live")).toBeInTheDocument();
 
   const switcher = screen.getByRole("list", { name: "Language" });
   fireEvent.click(within(switcher).getByRole("button", { name: "Nederlands" }));
 
-  expect(screen.getByText("[TODO: song 2]")).toBeInTheDocument();
+  expect(screen.getByText("Locos - Live")).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Volgend nummer" })).toBeInTheDocument();
   expect(screen.getByRole("link", { name: "Projecten" })).toBeInTheDocument();
   expect(document.documentElement.lang).toBe("nl");

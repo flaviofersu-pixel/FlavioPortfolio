@@ -32,9 +32,10 @@ export default {
     next: "Canción siguiente", // review
     play: "Reproducir", // review
     pause: "Pausar", // review
-    playing: "Reproduciendo", // review
-    paused: "En pausa", // review
-    status: "{state}: {title} de {artist}", // review
+    announcePlaying: "Reproduciendo {title} de {artist}", // review
+    announcePaused: "En pausa", // review
+    announceTrack: "{title} de {artist}", // review
+    listenOnSpotify: "Escuchar en Spotify", // review
   },
   demo: {
     label: "Demo interactiva de LucaStars", // review

@@ -1,8 +1,16 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { remoteTracks } from "../data/content";
 import { useLanguage } from "../i18n";
+import { createSpotifyController, loadSpotifyApi, toSpotifyUri } from "./spotifyEmbed";
 
-const clock = (seconds) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+const PLAY_TIMEOUT_MS = 5000; // how long Spotify gets to really start before the screen goes on alone
+const NOMINAL_SECONDS = 180; // progress bar length for tracks without a known length, visual mode only
+const TRACK_COUNT = remoteTracks.length;
+
+const uriOf = (index) => toSpotifyUri(remoteTracks[index].url);
+
+const clock = (seconds) =>
+  seconds == null ? "-:--" : `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
 
 // Button glyphs are drawn as SVG so they never render as emoji.
 const glyphs = {
@@ -46,34 +54,205 @@ function RemoteButton({ glyph, label, onClick, main = false }) {
   );
 }
 
-// A browser version of the remote's now-playing screen, laid out like the 3D render.
-// The screen's own text stays Spanish like the real device; buttons and announcements follow the page language.
+// The remote's now-playing screen, laid out like the 3D render. The screen's own text stays
+// Spanish like the real device; buttons and announcements follow the page language.
+//
+// With Spotify links in content.js, the first button press loads Spotify's iFrame API and shows
+// the official embed below the remote. The screen then mirrors what Spotify reports. If Spotify
+// can't load or doesn't start playing, the screen runs on its own and links to the track instead.
 export function RemoteScreen() {
   const { t } = useLanguage();
-  // Always start on the first track (Blinding Lights, the one in the 3D render).
+  // Always start on the first track.
   const [position, setPosition] = useState({ index: 0, elapsed: 0 });
   const [playing, setPlaying] = useState(false);
+  const [source, setSourceState] = useState("local"); // "spotify" once Spotify really plays
+  const [duration, setDuration] = useState(null); // seconds, as reported by Spotify
+  const [pending, setPendingState] = useState(false); // waiting for Spotify to start
+  const [embed, setEmbed] = useState("none"); // none | loading | ready | failed
+  const [showLink, setShowLink] = useState(false);
+  const [announcement, setAnnouncement] = useState("");
+
+  const host = useRef(null);
+  const controller = useRef(null);
+  const loading = useRef(null);
+  const sourceRef = useRef("local");
+  const pendingRef = useRef(false);
+  const attempts = useRef(0); // each press bumps this, so stale loads and timers do nothing
+  const watchdog = useRef(0);
+  const loadedIndex = useRef(0);
+  const interacted = useRef(false);
+  const announced = useRef({ playing: false, index: 0 });
+
   const track = remoteTracks[position.index];
 
+  const setSource = (value) => {
+    sourceRef.current = value;
+    setSourceState(value);
+  };
+  const setPending = (value) => {
+    pendingRef.current = value;
+    setPendingState(value);
+  };
+
+  // Mirrors Spotify's real state. Only takes over the screen once audio actually plays.
+  const onPlaybackUpdate = useCallback(({ data }) => {
+    if (!data.isPaused && !data.isBuffering) {
+      clearTimeout(watchdog.current);
+      pendingRef.current = false;
+      setPendingState(false);
+      setShowLink(false);
+      sourceRef.current = "spotify";
+      setSourceState("spotify");
+    }
+    if (sourceRef.current !== "spotify") return;
+    setPlaying(!data.isPaused);
+    setDuration(data.duration ? data.duration / 1000 : null);
+    setPosition((current) => ({ ...current, elapsed: data.position / 1000 }));
+  }, []);
+
+  const ensureController = (index) => {
+    if (controller.current) return Promise.resolve(controller.current);
+    if (!loading.current) {
+      setEmbed("loading");
+      loading.current = loadSpotifyApi()
+        .then((api) => createSpotifyController(api, host.current, uriOf(index)))
+        .then((created) => {
+          created.addListener("playback_update", onPlaybackUpdate);
+          controller.current = created;
+          loadedIndex.current = index;
+          setEmbed("ready");
+          return created;
+        })
+        .catch(() => {
+          loading.current = null;
+          host.current?.replaceChildren();
+          setEmbed("failed");
+          setShowLink(true);
+          return null;
+        });
+    }
+    return loading.current;
+  };
+
+  // If Spotify hasn't really started in time, keep the screen going on its own and offer the link.
+  const startWatchdog = (attempt) => {
+    clearTimeout(watchdog.current);
+    watchdog.current = setTimeout(() => {
+      if (attempt !== attempts.current) return;
+      setPending(false);
+      setSource("local");
+      setPlaying(true);
+      setShowLink(true);
+    }, PLAY_TIMEOUT_MS);
+  };
+
+  const requestPlay = async (index) => {
+    const attempt = ++attempts.current;
+    const uri = uriOf(index);
+    setPending(true);
+    const embedController = await ensureController(index);
+    if (attempt !== attempts.current) return;
+    if (!embedController) {
+      setPending(false);
+      setSource("local");
+      setPlaying(true);
+      return;
+    }
+    if (loadedIndex.current !== index) {
+      embedController.loadUri(uri);
+      loadedIndex.current = index;
+    }
+    embedController.play();
+    startWatchdog(attempt);
+  };
+
+  const onPlayPause = () => {
+    interacted.current = true;
+    if (pendingRef.current) {
+      // Pressed again while Spotify was still starting: treat it as stop.
+      attempts.current += 1;
+      clearTimeout(watchdog.current);
+      setPending(false);
+      setPlaying(false);
+      controller.current?.pause();
+      return;
+    }
+    if (sourceRef.current === "spotify") {
+      // Spotify decides; playback_update brings the screen along.
+      if (!playing) {
+        const attempt = ++attempts.current;
+        setPending(true);
+        startWatchdog(attempt);
+      }
+      controller.current.togglePlay();
+      return;
+    }
+    if (playing) {
+      setPlaying(false);
+      controller.current?.pause();
+      return;
+    }
+    if (uriOf(position.index)) requestPlay(position.index);
+    else setPlaying(true);
+  };
+
+  const skip = (step) => {
+    interacted.current = true;
+    const index = (position.index + step + TRACK_COUNT) % TRACK_COUNT;
+    setPosition({ index, elapsed: 0 });
+    setDuration(null);
+    if (uriOf(index)) {
+      requestPlay(index);
+    } else if (sourceRef.current === "spotify") {
+      // No link for this track: stop Spotify and carry on visually.
+      attempts.current += 1;
+      controller.current.pause();
+      setSource("local");
+    }
+  };
+
+  // Visual playback when Spotify isn't driving the screen.
   useEffect(() => {
-    if (!playing) return undefined;
+    if (source !== "local" || !playing) return undefined;
     const timer = setInterval(() => {
-      setPosition(({ index, elapsed }) =>
-        elapsed + 1 >= remoteTracks[index].seconds
-          ? { index: (index + 1) % remoteTracks.length, elapsed: 0 }
-          : { index, elapsed: elapsed + 1 }
-      );
+      setPosition(({ index, elapsed }) => {
+        const length = remoteTracks[index].seconds ?? NOMINAL_SECONDS;
+        return elapsed + 1 >= length ? { index: (index + 1) % TRACK_COUNT, elapsed: 0 } : { index, elapsed: elapsed + 1 };
+      });
     }, 1000);
     return () => clearInterval(timer);
-  }, [playing]);
+  }, [source, playing]);
 
-  const skip = (step) =>
-    setPosition(({ index }) => ({
-      index: (index + step + remoteTracks.length) % remoteTracks.length,
-      elapsed: 0,
-    }));
+  // Keep the embed on the same track as the screen (load only, never play on its own).
+  useEffect(() => {
+    const uri = uriOf(position.index);
+    if (!controller.current || sourceRef.current !== "local" || pendingRef.current || !uri) return;
+    if (loadedIndex.current === position.index) return;
+    controller.current.loadUri(uri);
+    loadedIndex.current = position.index;
+  }, [position.index]);
 
-  const progress = (position.elapsed / track.seconds) * 100;
+  // Screen reader announcements on real changes only, so switching language doesn't repeat them.
+  useEffect(() => {
+    if (!interacted.current) return;
+    const before = announced.current;
+    announced.current = { playing, index: position.index };
+    const { title, artist } = remoteTracks[position.index];
+    if (playing && (!before.playing || before.index !== position.index)) {
+      setAnnouncement(t("remote.announcePlaying", { title, artist }));
+    } else if (!playing && before.playing) {
+      setAnnouncement(t("remote.announcePaused"));
+    } else if (!playing && before.index !== position.index) {
+      setAnnouncement(t("remote.announceTrack", { title, artist }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, position.index]);
+
+  useEffect(() => () => clearTimeout(watchdog.current), []);
+
+  const length = source === "spotify" ? duration : track.seconds ?? null;
+  const progress = Math.min(100, (position.elapsed / (length || NOMINAL_SECONDS)) * 100);
+  const trackLink = /^https:\/\/open\.spotify\.com\//.test(track.url) ? track.url : null;
 
   return (
     <div className="w-full max-w-xs">
@@ -92,25 +271,30 @@ export function RemoteScreen() {
         </div>
         <p className="mt-2 flex justify-between text-base">
           <span>{clock(position.elapsed)}</span>
-          <span>{clock(track.seconds)}</span>
+          <span>{clock(length)}</span>
         </p>
       </div>
-      <div className="mt-4 flex justify-center gap-4">
+      <div className="mt-4 flex justify-center gap-4" aria-busy={pending}>
         <RemoteButton glyph="previous" label={t("remote.previous")} onClick={() => skip(-1)} />
         <RemoteButton
           main
-          glyph={playing ? "pause" : "play"}
-          label={playing ? t("remote.pause") : t("remote.play")}
-          onClick={() => setPlaying((value) => !value)}
+          glyph={playing || pending ? "pause" : "play"}
+          label={playing || pending ? t("remote.pause") : t("remote.play")}
+          onClick={onPlayPause}
         />
         <RemoteButton glyph="next" label={t("remote.next")} onClick={() => skip(1)} />
       </div>
+
+      {/* Spotify's embed goes in here, shown as Spotify draws it. React renders no children here on purpose. */}
+      <div ref={host} className="mt-4 empty:hidden" />
+      {showLink && trackLink ? (
+        <a href={trackLink} className="text-link mt-2 inline-block text-base font-normal">
+          {t("remote.listenOnSpotify")}
+        </a>
+      ) : null}
+
       <p className="sr-only" aria-live="polite">
-        {t("remote.status", {
-          state: playing ? t("remote.playing") : t("remote.paused"),
-          title: track.title,
-          artist: track.artist,
-        })}
+        {announcement}
       </p>
     </div>
   );
