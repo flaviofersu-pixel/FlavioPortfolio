@@ -31,7 +31,8 @@ export function Hero() {
         <p className="mt-3 max-w-[60ch] text-ink-soft">
           <span className="font-semibold text-ink">{t("hero.workbenchLabel")}</span> {withTodos(t("hero.workbench"))}
         </p>
-        <a href="#lucastars" className="text-link mt-8 inline-block">
+        {/* Hidden on phones, where the demo opens as a preview with its own button. */}
+        <a href="#lucastars" className="text-link mt-8 hidden sm:inline-block">
           {t("hero.demoLink")}
           <span aria-hidden="true"> ↓</span>
         </a>

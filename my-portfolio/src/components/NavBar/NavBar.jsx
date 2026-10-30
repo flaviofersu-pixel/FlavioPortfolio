@@ -11,7 +11,7 @@ function LanguageSwitch() {
         return (
           <li key={option.code} className="flex items-center">
             {index > 0 ? (
-              <span aria-hidden="true" className="text-ink-soft">
+              <span aria-hidden="true" className="px-1.5 text-ink-soft sm:px-0">
                 |
               </span>
             ) : null}
@@ -21,7 +21,7 @@ function LanguageSwitch() {
               aria-label={option.name}
               aria-current={active ? "true" : undefined}
               onClick={() => setLanguage(option.code)}
-              className={`px-1.5 py-1 underline-offset-4 decoration-2 ${
+              className={`inline-flex min-h-11 min-w-11 items-center justify-center px-1.5 underline-offset-4 decoration-2 sm:min-h-0 sm:min-w-0 sm:py-1 ${
                 active ? "font-semibold underline decoration-accent" : "text-ink-soft hover:text-ink hover:underline"
               }`}
             >

@@ -43,6 +43,8 @@ export default {
     fullScreen: "Volledig scherm", // review
     exitFullScreen: "Volledig scherm sluiten", // review
     escHint: "Esc sluit het ook", // review
+    tryDemo: "Probeer de demo", // review
+    previewAlt: "De homepagina van de LucaStars-winkel in de demo", // review
   },
   models: {
     choose: "Kies een 3D-weergave", // review

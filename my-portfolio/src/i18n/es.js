@@ -43,6 +43,8 @@ export default {
     fullScreen: "Pantalla completa", // review
     exitFullScreen: "Salir de pantalla completa", // review
     escHint: "También se cierra con Esc", // review
+    tryDemo: "Prueba la demo", // review
+    previewAlt: "La página de inicio de la tienda LucaStars en la demo", // review
   },
   models: {
     choose: "Elige una vista 3D", // review

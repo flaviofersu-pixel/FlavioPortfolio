@@ -43,6 +43,8 @@ export default {
     fullScreen: "Full screen",
     exitFullScreen: "Exit full screen",
     escHint: "Esc also closes it",
+    tryDemo: "Try the demo",
+    previewAlt: "The LucaStars shop home page in the demo",
   },
   models: {
     choose: "Choose a 3D render",

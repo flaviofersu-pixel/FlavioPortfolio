@@ -6,15 +6,19 @@ import { cartTotals, euro, findGame, LOGO, PROMO_CODES } from "./games";
 import { ProfileView } from "./ProfileView";
 import { AboutView, GamesView, HomeView, ProductView, StoreView } from "./ShopViews";
 import { useLanguage } from "../../i18n";
+import { useMediaQuery } from "../useMediaQuery";
 import { button } from "./styles";
 
 const navItems = ["home", "games", "store", "about"];
+const PREVIEW = "/projects/lucastars-preview.jpg";
 
 // A small, self-contained rebuild of the LucaStars webshop with sample data.
 // `wide` uses the roomier shop layout on large screens even when not full screen.
 // Only the frame around the shop is translated; the shop itself stays English (lang="en").
+// On phones it shows a still preview and opens full screen; its state survives closing.
 export function LucaStarsDemo({ wide = false }) {
   const { t } = useLanguage();
+  const compact = useMediaQuery("(max-width: 639px)");
   const [view, setView] = useState({ name: "home" });
   const [cart, setCart] = useState([]);
   const [promo, setPromo] = useState(null);
@@ -22,6 +26,16 @@ export function LucaStarsDemo({ wide = false }) {
   const [placedOrder, setPlacedOrder] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const scroller = useRef(null);
+  const toggleButton = useRef(null);
+  const openButton = useRef(null);
+  const wasExpanded = useRef(false);
+
+  // Move focus into full screen when it opens, and back to where it came from when it closes.
+  useEffect(() => {
+    if (expanded) toggleButton.current?.focus();
+    else if (wasExpanded.current) (openButton.current ?? toggleButton.current)?.focus();
+    wasExpanded.current = expanded;
+  }, [expanded]);
 
   useEffect(() => {
     if (!expanded) return undefined;
@@ -94,6 +108,31 @@ export function LucaStarsDemo({ wide = false }) {
     about: <AboutView />,
   };
 
+  if (compact && !expanded) {
+    return (
+      <div className="border-2 border-ink bg-[#060a2b]">
+        <img
+          src={PREVIEW}
+          alt={t("demo.previewAlt")}
+          width="678"
+          height="1034"
+          loading="lazy"
+          className="block h-[22rem] w-full object-cover object-top"
+        />
+        <div className="bg-ink p-3">
+          <button
+            ref={openButton}
+            type="button"
+            onClick={() => setExpanded(true)}
+            className="min-h-11 w-full bg-lcd px-4 font-semibold text-ink hover:bg-lcd-deep focus-visible:outline-lcd"
+          >
+            {t("demo.tryDemo")}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className={
@@ -112,13 +151,14 @@ export function LucaStarsDemo({ wide = false }) {
       >
         <div className="flex items-center gap-5 bg-ink px-3 py-2 text-base text-lcd [&_:focus-visible]:outline-lcd">
           <p className="min-w-0 flex-1 truncate">lucastars.demo/{view.name}</p>
-          <button type="button" onClick={reset} className="underline-offset-4 hover:underline">
+          <button type="button" onClick={reset} className="min-h-11 underline-offset-4 hover:underline sm:min-h-0">
             {t("demo.reset")}
           </button>
           <button
+            ref={toggleButton}
             type="button"
             onClick={() => setExpanded((value) => !value)}
-            className="underline-offset-4 hover:underline"
+            className="min-h-11 underline-offset-4 hover:underline sm:min-h-0"
             title={expanded ? t("demo.escHint") : undefined}
           >
             {expanded ? t("demo.exitFullScreen") : t("demo.fullScreen")}

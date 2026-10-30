@@ -151,9 +151,11 @@ export function ModelGallery({ models, className = "" }) {
               onClick={() => setActive(index)}
               aria-pressed={index === active}
               className={
-                index === active
-                  ? "font-semibold underline decoration-accent decoration-2 underline-offset-4"
-                  : "text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+                `min-h-11 sm:min-h-0 ${
+                  index === active
+                    ? "font-semibold underline decoration-accent decoration-2 underline-offset-4"
+                    : "text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+                }`
               }
             >
               {t(`models.${item.key}.label`)}

@@ -18,7 +18,7 @@ function Tech({ text, className = "" }) {
 function ProjectLinks({ links, className = "" }) {
   const { t } = useLanguage();
   return (
-    <ul className={`flex flex-wrap gap-x-6 gap-y-2 ${className}`}>
+    <ul className={`flex flex-wrap items-center gap-x-6 gap-y-2 ${className}`}>
       {links.map((link) => {
         const label = t(`projects.links.${link.type}`);
         return (
@@ -30,7 +30,7 @@ function ProjectLinks({ links, className = "" }) {
                 {label} {withTodos(link.href)}
               </>
             ) : (
-              <a href={link.href} className="text-link">
+              <a href={link.href} className="text-link inline-flex min-h-11 items-center sm:min-h-0">
                 {label}
               </a>
             )}

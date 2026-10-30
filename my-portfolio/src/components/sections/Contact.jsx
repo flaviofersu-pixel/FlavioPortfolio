@@ -70,7 +70,7 @@ export function Contact() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="underline decoration-rule decoration-2 underline-offset-4 hover:decoration-accent"
+                className="inline-flex min-h-11 items-center underline decoration-rule decoration-2 underline-offset-4 hover:decoration-accent sm:min-h-0"
               >
                 {link.label}
               </a>
