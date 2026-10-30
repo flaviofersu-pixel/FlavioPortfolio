@@ -5,7 +5,7 @@ export function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="border-t-2 border-ink">
       <div className="page grid gap-x-12 gap-y-10 pb-20 pt-14 md:grid-cols-[16rem_minmax(0,1fr)] lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-x-20 lg:pb-28 lg:pt-20">
-        <h2 id="about-title" className="font-pixel text-5xl font-medium leading-none md:col-span-2 lg:text-7xl">
+        <h2 id="about-title" className="font-pixel text-4xl font-medium leading-none md:col-span-2 lg:text-6xl">
           About
         </h2>
 

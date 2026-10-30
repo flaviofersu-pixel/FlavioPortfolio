@@ -75,7 +75,7 @@ export function RemoteScreen() {
     <div className="w-full max-w-xs">
       <div className="border-[10px] border-ink bg-lcd p-4 font-pixel">
         {/* The real screen is in Spanish. TODO: check the paused text on the device. */}
-        <p lang="es" className="flex items-center gap-2 border-b-2 border-ink pb-2 text-sm uppercase">
+        <p lang="es" className="flex items-center gap-2 border-b-2 border-ink pb-2 text-base uppercase">
           <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" aria-hidden="true" shapeRendering="crispEdges">
             {playing ? glyphs.play : glyphs.pause}
           </svg>
@@ -86,7 +86,7 @@ export function RemoteScreen() {
         <div className="mt-5 h-3 border-2 border-ink" aria-hidden="true">
           <div className="h-full bg-ink" style={{ width: `${progress}%` }} />
         </div>
-        <p className="mt-2 flex justify-between text-sm">
+        <p className="mt-2 flex justify-between text-base">
           <span>{clock(position.elapsed)}</span>
           <span>{clock(track.seconds)}</span>
         </p>

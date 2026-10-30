@@ -13,6 +13,8 @@ export const hero = {
   sentence: "I build checkouts for web shops and solder buttons onto ESP32 boards.",
   intro: "I’m in my second year of a software engineering degree, and I live in Almere.",
   link: "Try the LucaStars demo",
+  screenCaption: "The now-playing screen from my Spotify remote, in the browser. The three buttons work.",
+  screenLink: "How I built the remote",
 };
 
 // Edit this line whenever something new lands on the desk.
@@ -68,7 +70,6 @@ export const projects = [
       "[TODO: one constraint, for example the display size or power use.] [TODO: one decision you made and why, for example why a Sharp memory display.]",
     ],
     tech: "C++, Arduino framework, PlatformIO, Wokwi",
-    screenCaption: "A browser version of the now-playing screen. The three buttons work.",
     models: [
       {
         label: "The remote",

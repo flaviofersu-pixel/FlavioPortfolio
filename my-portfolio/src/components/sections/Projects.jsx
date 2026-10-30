@@ -2,7 +2,6 @@ import { projects } from "../../data/content";
 import { LucaStarsDemo } from "../LucaStarsDemo/LucaStarsDemo";
 import { ModelGallery } from "../ModelViewer";
 import { Prose, withTodos } from "../Prose";
-import { RemoteScreen } from "../RemoteScreen";
 
 function Tech({ text, className = "" }) {
   return (
@@ -19,7 +18,7 @@ function LucaStars({ project }) {
         <header className="xl:col-span-2">
           <h3
             id={`${project.id}-title`}
-            className="font-pixel text-[clamp(3.25rem,11vw,8.5rem)] font-medium leading-[0.9]"
+            className="font-pixel text-[clamp(2.5rem,8vw,5.5rem)] font-medium leading-[0.95]"
           >
             {project.name}
           </h3>
@@ -46,7 +45,7 @@ function SpotifyRemote({ project }) {
     <article id={project.id} aria-labelledby={`${project.id}-title`} className="page">
       <div className="grid gap-x-16 gap-y-10 border-t border-rule py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:py-24">
         <header className="lg:col-start-1 lg:row-start-1">
-          <h3 id={`${project.id}-title`} className="font-pixel text-[clamp(2.5rem,7vw,4.5rem)] font-medium leading-none">
+          <h3 id={`${project.id}-title`} className="font-pixel text-[clamp(2.125rem,6vw,4rem)] font-medium leading-none">
             {project.name}
           </h3>
           <p className="mt-3 text-ink-soft">{project.kind}</p>
@@ -60,10 +59,6 @@ function SpotifyRemote({ project }) {
         <div className="lg:col-start-1 lg:row-start-2">
           <Prose paragraphs={project.story} />
           <Tech text={project.tech} className="mt-6" />
-          <figure className="mt-12">
-            <RemoteScreen />
-            <figcaption className="mt-4 max-w-xs text-base text-ink-soft">{project.screenCaption}</figcaption>
-          </figure>
         </div>
       </div>
     </article>
