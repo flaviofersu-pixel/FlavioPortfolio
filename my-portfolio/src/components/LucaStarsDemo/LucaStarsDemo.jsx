@@ -5,13 +5,16 @@ import { CheckoutView } from "./CheckoutView";
 import { cartTotals, euro, findGame, LOGO, PROMO_CODES } from "./games";
 import { ProfileView } from "./ProfileView";
 import { AboutView, GamesView, HomeView, ProductView, StoreView } from "./ShopViews";
+import { useLanguage } from "../../i18n";
 import { button } from "./styles";
 
 const navItems = ["home", "games", "store", "about"];
 
 // A small, self-contained rebuild of the LucaStars webshop with sample data.
 // `wide` uses the roomier shop layout on large screens even when not full screen.
+// Only the frame around the shop is translated; the shop itself stays English (lang="en").
 export function LucaStarsDemo({ wide = false }) {
+  const { t } = useLanguage();
   const [view, setView] = useState({ name: "home" });
   const [cart, setCart] = useState([]);
   const [promo, setPromo] = useState(null);
@@ -105,25 +108,26 @@ export function LucaStarsDemo({ wide = false }) {
           expanded ? "max-w-6xl border-lcd" : "border-ink"
         }`}
         role="region"
-        aria-label="LucaStars interactive demo"
+        aria-label={t("demo.label")}
       >
         <div className="flex items-center gap-5 bg-ink px-3 py-2 text-base text-lcd [&_:focus-visible]:outline-lcd">
           <p className="min-w-0 flex-1 truncate">lucastars.demo/{view.name}</p>
           <button type="button" onClick={reset} className="underline-offset-4 hover:underline">
-            Reset
+            {t("demo.reset")}
           </button>
           <button
             type="button"
             onClick={() => setExpanded((value) => !value)}
             className="underline-offset-4 hover:underline"
-            title={expanded ? "Esc also closes it" : undefined}
+            title={expanded ? t("demo.escHint") : undefined}
           >
-            {expanded ? "Exit full screen" : "Full screen"}
+            {expanded ? t("demo.exitFullScreen") : t("demo.fullScreen")}
           </button>
         </div>
 
         <div
           ref={scroller}
+          lang="en"
           className="relative flex-1 overflow-y-auto bg-gradient-to-b from-[#060a2b] to-[#10153c] font-pixel text-white [&_:focus-visible]:outline-[#edad2e]"
         >
           {view.name === "checkout" ? (
@@ -179,7 +183,7 @@ export function LucaStarsDemo({ wide = false }) {
         </div>
 
         {placedOrder ? (
-          <div className="absolute inset-0 z-20 grid place-items-center bg-[#060a2b]/80 p-4 font-pixel text-white [&_:focus-visible]:outline-[#edad2e]">
+          <div lang="en" className="absolute inset-0 z-20 grid place-items-center bg-[#060a2b]/80 p-4 font-pixel text-white [&_:focus-visible]:outline-[#edad2e]">
             <div
               className="w-full max-w-xs border-2 border-[#edad2e] bg-[#20275e] p-5 text-center shadow-card"
               role="alertdialog"

@@ -28,8 +28,15 @@
     outline-offset: 3px;
   }
 
+  /* Clears the sticky header, which has two rows on phones. */
   [id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: 6.5rem;
+  }
+
+  @media (min-width: 640px) {
+    [id] {
+      scroll-margin-top: 4.5rem;
+    }
   }
 }
 

@@ -1,8 +1,11 @@
-import { hero, person, workbench } from "../../data/content";
+import { person } from "../../data/content";
+import { useLanguage } from "../../i18n";
 import { withTodos } from "../Prose";
 import { RemoteScreen } from "../RemoteScreen";
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="top"
@@ -18,18 +21,18 @@ export function Hero() {
           <span className="block">{person.lastName}</span>
         </h1>
         <p className="mt-8 max-w-[24ch] text-[clamp(1.5rem,3.2vw,2.5rem)] font-semibold leading-tight">
-          {hero.sentence}
+          {t("hero.sentence")}
         </p>
-        <p className="mt-5 max-w-[60ch] text-ink-soft">{hero.intro}</p>
+        <p className="mt-5 max-w-[60ch] text-ink-soft">{t("hero.intro")}</p>
         <a href="#contact" className="text-link mt-3 inline-block">
-          {hero.internship}
+          {t("hero.internship")}
           <span aria-hidden="true"> →</span>
         </a>
         <p className="mt-3 max-w-[60ch] text-ink-soft">
-          <span className="font-semibold text-ink">On my workbench:</span> {withTodos(workbench)}
+          <span className="font-semibold text-ink">{t("hero.workbenchLabel")}</span> {withTodos(t("hero.workbench"))}
         </p>
         <a href="#lucastars" className="text-link mt-8 inline-block">
-          {hero.link}
+          {t("hero.demoLink")}
           <span aria-hidden="true"> ↓</span>
         </a>
       </div>
@@ -37,9 +40,9 @@ export function Hero() {
       <figure className="lg:justify-self-end">
         <RemoteScreen />
         <figcaption className="mt-4 max-w-xs text-base text-ink-soft">
-          {hero.screenCaption}{" "}
+          {t("hero.screenCaption")}{" "}
           <a href="#spotify-remote" className="text-link font-normal">
-            {hero.screenLink}
+            {t("hero.screenLink")}
           </a>
         </figcaption>
       </figure>

@@ -1,30 +1,68 @@
 import { navLinks, person } from "../../data/content";
+import { languages, useLanguage } from "../../i18n";
+
+function LanguageSwitch() {
+  const { lang, setLanguage, t } = useLanguage();
+
+  return (
+    <ul aria-label={t("nav.language")} className="flex items-center">
+      {languages.map((option, index) => {
+        const active = option.code === lang;
+        return (
+          <li key={option.code} className="flex items-center">
+            {index > 0 ? (
+              <span aria-hidden="true" className="text-ink-soft">
+                |
+              </span>
+            ) : null}
+            <button
+              type="button"
+              lang={option.code}
+              aria-label={option.name}
+              aria-current={active ? "true" : undefined}
+              onClick={() => setLanguage(option.code)}
+              className={`px-1.5 py-1 underline-offset-4 decoration-2 ${
+                active ? "font-semibold underline decoration-accent" : "text-ink-soft hover:text-ink hover:underline"
+              }`}
+            >
+              {option.short}
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 export function NavBar() {
+  const { t } = useLanguage();
+
   return (
     <header className="sticky top-0 z-50 border-b border-ink bg-lcd">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 focus:bg-ink focus:px-3 focus:py-2 focus:text-lcd"
       >
-        Skip to content
+        {t("nav.skip")}
       </a>
-      <nav aria-label="Main" className="page flex items-center justify-between gap-6 py-3">
+      {/* On phones: name and language switch on the first row, links on the second. */}
+      <nav aria-label={t("nav.label")} className="page flex flex-wrap items-center justify-between gap-x-8 gap-y-1 py-2 sm:py-3">
         <a href="#top" className="font-pixel text-2xl leading-none">
           {person.firstName}
         </a>
-        <ul className="flex gap-5 sm:gap-8">
+        <ul className="order-last flex w-full gap-5 pb-1 sm:order-none sm:ml-auto sm:w-auto sm:gap-8 sm:pb-0">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 className="underline-offset-4 decoration-2 hover:underline hover:decoration-accent"
               >
-                {link.label}
+                {t(`nav.${link.key}`)}
               </a>
             </li>
           ))}
         </ul>
+        <LanguageSwitch />
       </nav>
     </header>
   );

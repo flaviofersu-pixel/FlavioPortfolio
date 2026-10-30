@@ -14,8 +14,9 @@ export function withTodos(text) {
 export function Prose({ paragraphs, className = "" }) {
   return (
     <div className={`max-w-[68ch] space-y-4 ${className}`}>
-      {paragraphs.map((text) => (
-        <p key={text}>{withTodos(text)}</p>
+      {/* Keyed by position, so a language switch updates the text in place. */}
+      {paragraphs.map((text, index) => (
+        <p key={index}>{withTodos(text)}</p>
       ))}
     </div>
   );

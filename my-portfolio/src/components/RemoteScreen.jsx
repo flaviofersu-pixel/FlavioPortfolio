@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { remoteTracks } from "../data/content";
+import { useLanguage } from "../i18n";
 
 const clock = (seconds) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 
@@ -46,7 +47,9 @@ function RemoteButton({ glyph, label, onClick, main = false }) {
 }
 
 // A browser version of the remote's now-playing screen, laid out like the 3D render.
+// The screen's own text stays Spanish like the real device; buttons and announcements follow the page language.
 export function RemoteScreen() {
+  const { t } = useLanguage();
   // Always start on the first track (Blinding Lights, the one in the 3D render).
   const [position, setPosition] = useState({ index: 0, elapsed: 0 });
   const [playing, setPlaying] = useState(false);
@@ -93,17 +96,21 @@ export function RemoteScreen() {
         </p>
       </div>
       <div className="mt-4 flex justify-center gap-4">
-        <RemoteButton glyph="previous" label="Previous track" onClick={() => skip(-1)} />
+        <RemoteButton glyph="previous" label={t("remote.previous")} onClick={() => skip(-1)} />
         <RemoteButton
           main
           glyph={playing ? "pause" : "play"}
-          label={playing ? "Pause" : "Play"}
+          label={playing ? t("remote.pause") : t("remote.play")}
           onClick={() => setPlaying((value) => !value)}
         />
-        <RemoteButton glyph="next" label="Next track" onClick={() => skip(1)} />
+        <RemoteButton glyph="next" label={t("remote.next")} onClick={() => skip(1)} />
       </div>
       <p className="sr-only" aria-live="polite">
-        {`${playing ? "Playing" : "Paused"}: ${track.title} by ${track.artist}`}
+        {t("remote.status", {
+          state: playing ? t("remote.playing") : t("remote.paused"),
+          title: track.title,
+          artist: track.artist,
+        })}
       </p>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../i18n";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 const SWING_DEGREES = 35;
@@ -128,15 +129,21 @@ export function ModelViewer({ src, alt, className }) {
 }
 
 // Several models of the same project, with text buttons to switch between them.
+// Labels and alt text come from src/i18n under models.<key>.
 export function ModelGallery({ models, className = "" }) {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
   const model = models[active];
 
   return (
     <div className={className}>
-      <ModelViewer src={model.src} alt={model.alt} className="block h-80 w-full bg-lcd-deep sm:h-[28rem] lg:h-[34rem]" />
+      <ModelViewer
+        src={model.src}
+        alt={t(`models.${model.key}.alt`)}
+        className="block h-80 w-full bg-lcd-deep sm:h-[28rem] lg:h-[34rem]"
+      />
       {models.length > 1 ? (
-        <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2" role="group" aria-label="Choose a 3D render">
+        <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2" role="group" aria-label={t("models.choose")}>
           {models.map((item, index) => (
             <button
               key={item.src}
@@ -149,7 +156,7 @@ export function ModelGallery({ models, className = "" }) {
                   : "text-ink-soft underline-offset-4 hover:text-ink hover:underline"
               }
             >
-              {item.label}
+              {t(`models.${item.key}.label`)}
             </button>
           ))}
         </div>
