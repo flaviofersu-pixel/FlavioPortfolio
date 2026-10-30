@@ -15,24 +15,8 @@ module.exports = {
           soft: "#41463e",
         },
         rule: "#8c9188",
-        accent: "#9c2c14",
-
-        // Old palette, still used by About, Experience, Contact and the footer
-        // until those sections are rebuilt.
-        night: "#0c0918",
-        grape: {
-          950: "#160f2a",
-          900: "#231942",
-          800: "#352860",
-          700: "#5e548e",
-          500: "#9f86c0",
-          400: "#c4b5fd",
-          300: "#ddd6fe",
-        },
-        gold: {
-          DEFAULT: "#f0c14b",
-          dim: "#d4a017",
-        },
+        // The remote's green play button, darkened to pass AA on both greys.
+        accent: "#175c3b",
       },
       fontFamily: {
         pixel: ['"Pixelify Sans"', "monospace"],

@@ -1,72 +1,78 @@
-import { Mail, MapPin, Phone } from "lucide-react";
-import { person } from "../../data/content";
-import { ContactForm } from "../ContactForm";
-import { GitHubIcon } from "../GitHubIcon";
-import { LinkedInIcon } from "../LinkedInIcon";
-import { SectionHeader } from "../SectionHeader";
+import { useEffect, useState } from "react";
+import { contact, person } from "../../data/content";
+import { withTodos } from "../Prose";
+
+function CopyEmail() {
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    if (!status) return undefined;
+    const timer = setTimeout(() => setStatus(""), 2500);
+    return () => clearTimeout(timer);
+  }, [status]);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(person.email);
+      setStatus("Copied");
+    } catch {
+      setStatus("Couldn’t copy, select the address instead");
+    }
+  };
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={copy}
+        className="border-2 border-accent bg-accent px-4 py-2 text-base font-semibold text-lcd hover:border-ink hover:bg-ink"
+      >
+        Copy email
+      </button>
+      <p role="status" className="basis-full text-base text-ink-soft sm:basis-auto">
+        {status}
+      </p>
+    </>
+  );
+}
+
+const links = [
+  { href: person.phoneHref, label: person.phone },
+  { href: person.linkedin, label: "LinkedIn" },
+  { href: person.github, label: "GitHub" },
+];
 
 export function Contact() {
   return (
-    <section id="contact" className="scroll-mt-24 bg-grape-950">
-      <div className="w-full px-6 py-20 lg:px-12">
-        <SectionHeader index="05" kicker="Say hello" title="Contact" />
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="text-left">
-            <p className="max-w-2xl text-lg leading-relaxed text-grape-300 lg:text-xl">
-              I&apos;m looking for a full stack internship from February 2027. If you have a role,
-              a question, or just want to talk, send a message.
-            </p>
-            <ul className="mt-8 space-y-4 text-grape-300 lg:text-lg">
-              <li>
-                <a
-                  href={person.phoneHref}
-                  className="inline-flex items-center gap-3 hover:text-white"
-                >
-                  <Phone size={18} className="text-gold" aria-hidden="true" />
-                  {person.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${person.email}`}
-                  className="inline-flex items-center gap-3 hover:text-white"
-                >
-                  <Mail size={18} className="text-gold" aria-hidden="true" />
-                  {person.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={person.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 hover:text-white"
-                >
-                  <LinkedInIcon size={18} className="text-gold" />
-                  LinkedIn profile
-                </a>
-              </li>
-              <li>
-                <a
-                  href={person.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 hover:text-white"
-                >
-                  <GitHubIcon size={18} className="text-gold" />
-                  GitHub profile
-                </a>
-              </li>
-              <li className="inline-flex items-center gap-3">
-                <MapPin size={18} className="text-gold" aria-hidden="true" />
-                {person.location}
-              </li>
-            </ul>
-          </div>
-          <div className="rounded-xl border border-grape-700 bg-grape-900 p-6">
-            <ContactForm />
-          </div>
+    <section id="contact" aria-labelledby="contact-title" className="border-t-2 border-ink">
+      <div className="page pb-24 pt-16 lg:pb-32 lg:pt-24">
+        <h2
+          id="contact-title"
+          className="max-w-[20ch] font-pixel text-[clamp(2.25rem,6vw,5rem)] font-medium leading-[1.05]"
+        >
+          {contact.heading}
+        </h2>
+        <p className="mt-6 max-w-[60ch]">{withTodos(contact.text)}</p>
+
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <a href={`mailto:${person.email}`} className="text-link break-all text-[clamp(1.375rem,4.5vw,2.5rem)]">
+            {person.email}
+          </a>
+          <CopyEmail />
         </div>
+
+        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+          {links.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="underline decoration-rule decoration-2 underline-offset-4 hover:decoration-accent"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

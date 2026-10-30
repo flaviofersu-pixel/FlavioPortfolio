@@ -2,8 +2,6 @@ export const person = {
   firstName: "Flavio",
   lastName: "Fernandez Suarez",
   fullName: "Flavio Fernandez Suarez",
-  role: "Software Engineering Student | Full Stack",
-  location: "Almere, Netherlands",
   phone: "+31 687154687",
   phoneHref: "tel:+31687154687",
   email: "flaviofersu@gmail.com",
@@ -13,40 +11,35 @@ export const person = {
 
 export const hero = {
   sentence: "I build checkouts for web shops and solder buttons onto ESP32 boards.",
-  intro:
-    "I’m a second-year HBO-ICT Software Engineering student at the Hogeschool van Amsterdam, on the full stack profile. I live in Almere.",
+  intro: "I’m in my second year of a software engineering degree, and I live in Almere.",
   link: "Try the LucaStars demo",
 };
 
 // Edit this line whenever something new lands on the desk.
 export const workbench = "[TODO: what’s on your workbench right now?]";
 
-export const profile = `Second-year HBO-ICT Software Engineering student at the Amsterdam University of Applied Sciences (HvA), on the full stack profile. I’m looking for an internship from February 2027 where I can build real features in a team. Besides programming, I like working with hardware: Arduino, soldering, and my own home lab. I speak Spanish, English, and Dutch.`;
-
-export const education = {
-  school: "Hogeschool van Amsterdam (HvA)",
-  degree: "Bachelor HBO-ICT, Software Engineering",
-  dates: "2025 – present",
-  detail: "Full stack profile",
-};
-
-export const experience = {
-  title: "Student Mentor",
-  org: "Amsterdam University of Applied Sciences (HvA)",
-  type: "Part-time job",
-  dates: "Sept 2026 – present",
-  bullets: [
-    "Guide first-year Software Engineering students through their project work",
-    "Help them with Git and GitLab (branches, merging, conflicts) and with debugging their code by asking the right questions",
-    "Give feedback on their sprint reviews and project reports",
+export const about = {
+  lead: "Outside of school I work with hardware: Arduino and ESP32 boards, soldering, and my own home lab. [TODO: what runs on your home lab?] I speak Spanish, English and Dutch.",
+  timeline: [
+    {
+      when: "Since Sept 2026",
+      title: "Student Mentor at HvA",
+      detail: "Part-time job",
+      text: "I guide first-year students through their project work. A lot of that is Git and GitLab: branches, merging and the conflicts that come with it. When their code breaks, I help them debug it by asking the right questions. I also give feedback on their sprint reviews and reports.",
+    },
+    {
+      when: "Since 2025",
+      title: "HBO-ICT Software Engineering",
+      detail: "Hogeschool van Amsterdam, full stack profile",
+    },
   ],
 };
 
-export const languages = [
-  { name: "Spanish" },
-  { name: "English" },
-  { name: "Dutch" },
-];
+// The only place on the site with the internship date and contact details.
+export const contact = {
+  heading: "I’m looking for a full stack internship from February 2027.",
+  text: "Email is the easiest way to reach me. [TODO: where you can work, for example the Amsterdam area, hybrid or remote.]",
+};
 
 // Order matters: LucaStars gets the most space, the last two are shown smaller.
 // Anything in [TODO: ...] is highlighted on the page until you replace it.
