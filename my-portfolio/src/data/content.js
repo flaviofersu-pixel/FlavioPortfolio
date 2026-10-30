@@ -11,13 +11,23 @@ export const person = {
   github: "https://github.com/flaviofersu-pixel",
 };
 
+export const hero = {
+  sentence: "I build checkouts for web shops and solder buttons onto ESP32 boards.",
+  intro:
+    "I’m a second-year HBO-ICT Software Engineering student at the Hogeschool van Amsterdam, on the full stack profile. I live in Almere.",
+  link: "Try the LucaStars demo",
+};
+
+// Edit this line whenever something new lands on the desk.
+export const workbench = "[TODO: what’s on your workbench right now?]";
+
 export const profile = `Second-year HBO-ICT Software Engineering student at the Amsterdam University of Applied Sciences (HvA), on the full stack profile. I’m looking for an internship from February 2027 where I can build real features in a team. Besides programming, I like working with hardware: Arduino, soldering, and my own home lab. I speak Spanish, English, and Dutch.`;
 
 export const education = {
   school: "Hogeschool van Amsterdam (HvA)",
   degree: "Bachelor HBO-ICT, Software Engineering",
   dates: "2025 – present",
-  detail: "Public Lab studio, full stack profile",
+  detail: "Full stack profile",
 };
 
 export const experience = {
@@ -32,58 +42,40 @@ export const experience = {
   ],
 };
 
-export const skillGroups = [
-  {
-    label: "Frontend",
-    items: ["React", "Next.js", "JavaScript", "TypeScript", "HTML", "CSS", "Tailwind CSS"],
-  },
-  {
-    label: "Backend & data",
-    items: ["REST APIs", "MySQL", "OOP"],
-  },
-  {
-    label: "Tools",
-    items: ["Git", "GitLab", "Docker", "Postman"],
-  },
-  {
-    label: "Hardware",
-    items: ["Arduino", "ESP32", "Soldering", "Home lab"],
-  },
-];
-
 export const languages = [
   { name: "Spanish" },
   { name: "English" },
   { name: "Dutch" },
 ];
 
+// Order matters: LucaStars gets the most space, the last two are shown smaller.
+// Anything in [TODO: ...] is highlighted on the page until you replace it.
 export const projects = [
   {
     id: "lucastars",
     name: "LucaStars",
-    tag: "Featured project · School project",
-    summary:
-      "A digital game store with catalog browsing, deals, a shopping cart, checkout, promo codes, and a user profile with order history.",
-    features: [
-      "Home, store, and product pages with best sellers, latest releases, and weekend deals",
-      "Shopping cart with VAT, discounts, promo codes, and related-game suggestions",
-      "Checkout flow with contact details, billing address, and order summary",
-      "User profile with spend totals and order history",
+    kind: "School project",
+    story: [
+      "LucaStars is a digital game store, made as a school project. You can browse the catalog, pick up deals, fill a cart, check out and look back at your orders on your profile. [TODO: solo or team? If team, how many people and which parts did you build yourself?]",
+      "The cart adds VAT, takes off discounts and accepts promo codes, and the same total has to come out at checkout and later in the order history. [TODO: one constraint you worked within, for example a required stack, a deadline or the brief.]",
+      "[TODO: one decision you made and why, for example where the price calculation lives.]",
+      "[TODO: the result, for example the grade, feedback you got or what you would change now.]",
     ],
-    hint: "This shop is a working mini demo. Add a game to your cart, open the Discount code tab, apply LUCA10, and place an order. Use the full screen button for a bigger view.",
+    tryIt:
+      "This is a smaller rebuild of the shop with sample data, running right here in the page. Add a game to your cart, open the Discount code tab, enter LUCA10 and place an order. It shows up under My profile. Nothing is charged.",
+    tech: "[TODO: tech stack]",
   },
   {
-    id: "spotify-gadget",
+    id: "spotify-remote",
     name: "Spotify mini remote",
-    tag: "Personal hardware project",
-    dates: "2026 – present",
-    summary:
-      "A small Spotify remote built around an ESP32-C3 microcontroller, a Sharp memory display, and three buttons.",
-    features: [
-      "First prototype in C++ (Arduino, PlatformIO)",
-      "Tested in the Wokwi simulator",
-      "Play/pause, next/previous, and a now-playing screen",
+    kind: "Personal hardware project, since 2026",
+    story: [
+      "A small remote for Spotify. It runs on an ESP32-C3 with a Sharp memory display and three buttons: play/pause, next and previous. The screen shows what’s playing. [TODO: why did you want to build it?]",
+      "I wrote the first prototype in C++ with the Arduino framework and PlatformIO, and tested it in the Wokwi simulator. [TODO: has it run on real hardware yet?]",
+      "[TODO: one constraint, for example the display size or power use.] [TODO: one decision you made and why, for example why a Sharp memory display.]",
     ],
+    tech: "C++, Arduino framework, PlatformIO, Wokwi",
+    screenCaption: "A browser version of the now-playing screen. The three buttons work.",
     models: [
       {
         label: "The remote",
@@ -100,45 +92,37 @@ export const projects = [
   {
     id: "climate-impact-tool",
     name: "Climate impact tool for Microsoft Teams",
-    tag: "School project · Client: City of Amsterdam",
-    dates: "2026 – present",
-    summary:
-      "Making an existing climate impact tool reusable for other organizations and updating it to current calculation models. I’m one of two full stack developers in a team of five.",
-    features: [
-      "Researching how to build it as a Microsoft Teams app",
-      "Designing and building it with the other developer",
-      "Direct contact with the client through meetings, feedback rounds, and iterations",
+    kind: "School project for the City of Amsterdam, since 2026",
+    story: [
+      "The City of Amsterdam has a climate impact tool, and our job is to make it reusable for other organizations. [TODO: one sentence on what the tool does.] We’re a team of five, and I’m one of the two full stack developers.",
+      "I researched how to build it as a Microsoft Teams app. After that, the other developer and I designed and built it together. I also work with the client directly.",
+      "[TODO: one constraint, for example what a Teams app can and can’t do.] [TODO: one decision from your research and why.] [TODO: where the project stands now.]",
     ],
+    tech: "Microsoft Teams app, [TODO: tech stack]",
   },
   {
     id: "angels-treasure",
     name: "Angel’s Treasure website",
-    tag: "Freelance · Handmade fashion shop, Amsterdam",
-    dates: "2026 – present",
-    summary:
-      "A website for a small handmade fashion shop that currently only sells through Vinted, Depop, and pop-up markets.",
-    features: [
-      "Mid-fi and hi-fi designs",
-      "One-page site in HTML, CSS, and JavaScript",
-      "Product filter and custom order form",
-      "Netlify Forms and Decap CMS so the owner can add products and markets",
+    kind: "Freelance, since 2026",
+    story: [
+      "Angel’s Treasure is a small handmade fashion shop in Amsterdam that sells through Vinted and Depop. I made mid-fi and hi-fi designs first, then built a one-page site in HTML, CSS and JavaScript with a product filter and a custom order form.",
+      "I set up Decap CMS so the owner can add products and markets, and Netlify Forms to handle the order form.",
+      "[TODO: one constraint, for example budget or hosting.] [TODO: why Decap CMS over other options?] [TODO: is the site live? Add the link.]",
     ],
-  },
-  {
-    id: "portfolio",
-    name: "Personal portfolio",
-    tag: "This site",
-    summary:
-      "A React and Tailwind CSS portfolio built to present my work, education, and internship profile in one place.",
-    features: ["React 19", "Vite", "Tailwind CSS", "Responsive layout", "Accessible contact form"],
+    tech: "HTML, CSS, JavaScript, Netlify Forms, Decap CMS",
   },
 ];
 
+// Songs for the remote's screen. The first one is the track shown in the 3D render.
+// TODO: swap the other two for songs you actually play.
+export const remoteTracks = [
+  { title: "Blinding Lights", artist: "The Weeknd", seconds: 200 },
+  { title: "[TODO: song 2]", artist: "[TODO: artist]", seconds: 242 },
+  { title: "[TODO: song 3]", artist: "[TODO: artist]", seconds: 178 },
+];
+
 export const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
+  { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];

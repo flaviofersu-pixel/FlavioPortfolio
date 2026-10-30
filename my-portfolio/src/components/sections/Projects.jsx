@@ -1,90 +1,105 @@
 import { projects } from "../../data/content";
 import { LucaStarsDemo } from "../LucaStarsDemo/LucaStarsDemo";
 import { ModelGallery } from "../ModelViewer";
-import { SectionHeader } from "../SectionHeader";
+import { Prose, withTodos } from "../Prose";
+import { RemoteScreen } from "../RemoteScreen";
+
+function Tech({ text, className = "" }) {
+  return (
+    <p className={`text-ink-soft ${className}`}>
+      <span className="font-semibold text-ink">Built with:</span> {withTodos(text)}
+    </p>
+  );
+}
+
+function LucaStars({ project }) {
+  return (
+    <article id={project.id} aria-labelledby={`${project.id}-title`} className="page pb-20 pt-14 lg:pb-28 lg:pt-20">
+      <div className="grid gap-x-12 gap-y-8 xl:grid-cols-[minmax(0,1fr)_19rem]">
+        <header className="xl:col-span-2">
+          <h3
+            id={`${project.id}-title`}
+            className="font-pixel text-[clamp(3.25rem,11vw,8.5rem)] font-medium leading-[0.9]"
+          >
+            {project.name}
+          </h3>
+          <p className="mt-3 text-ink-soft">{project.kind}</p>
+        </header>
+
+        <div className="relative min-w-0">
+          <LucaStarsDemo wide />
+        </div>
+
+        <div className="max-w-[68ch] xl:pt-1">
+          <p>{project.tryIt}</p>
+          <Tech text={project.tech} className="mt-6" />
+        </div>
+
+        <Prose paragraphs={project.story} className="xl:mt-6" />
+      </div>
+    </article>
+  );
+}
+
+function SpotifyRemote({ project }) {
+  return (
+    <article id={project.id} aria-labelledby={`${project.id}-title`} className="page">
+      <div className="grid gap-x-16 gap-y-10 border-t border-rule py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:py-24">
+        <header className="lg:col-start-1 lg:row-start-1">
+          <h3 id={`${project.id}-title`} className="font-pixel text-[clamp(2.5rem,7vw,4.5rem)] font-medium leading-none">
+            {project.name}
+          </h3>
+          <p className="mt-3 text-ink-soft">{project.kind}</p>
+        </header>
+
+        <ModelGallery
+          models={project.models}
+          className="min-w-0 lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start"
+        />
+
+        <div className="lg:col-start-1 lg:row-start-2">
+          <Prose paragraphs={project.story} />
+          <Tech text={project.tech} className="mt-6" />
+          <figure className="mt-12">
+            <RemoteScreen />
+            <figcaption className="mt-4 max-w-xs text-base text-ink-soft">{project.screenCaption}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function SmallProject({ project }) {
+  return (
+    <article id={project.id} aria-labelledby={`${project.id}-title`} className="min-w-0">
+      <h3 id={`${project.id}-title`} className="font-pixel text-3xl font-medium leading-tight lg:text-4xl">
+        {project.name}
+      </h3>
+      <p className="mt-2 text-ink-soft">{project.kind}</p>
+      <Prose paragraphs={project.story} className="mt-6" />
+      <Tech text={project.tech} className="mt-6" />
+    </article>
+  );
+}
 
 export function Projects() {
-  const featured = projects[0];
-  const rest = projects.slice(1);
+  const [lucaStars, spotifyRemote, ...smaller] = projects;
 
   return (
-    <section id="projects" className="scroll-mt-24 bg-night">
-      <div className="w-full px-6 py-20 lg:px-12">
-        <SectionHeader index="02" kicker="Work" title="Projects" />
-
-        <article className="overflow-hidden rounded-2xl border border-grape-700 bg-grape-950 shadow-card">
-          <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="relative min-w-0 bg-grape-900 lg:min-h-[560px]">
-              <LucaStarsDemo />
-            </div>
-
-            <div className="min-w-0 p-6 text-left sm:p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-                {featured.tag}
-              </p>
-              <h3 className="mt-2 font-pixel text-3xl text-white lg:text-4xl">{featured.name}</h3>
-              <p className="mt-4 leading-relaxed text-grape-300 lg:text-lg">{featured.summary}</p>
-              <ul className="mt-6 space-y-3 text-sm text-grape-300 lg:text-base">
-                {featured.features.map((feature) => (
-                  <li key={feature} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              {featured.hint ? (
-                <p className="mt-6 rounded-lg border border-gold/30 bg-gold/5 p-4 text-sm text-grape-300 lg:text-base">
-                  <span className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-                    Try it
-                  </span>
-                  <br />
-                  {featured.hint}
-                </p>
-              ) : null}
-            </div>
-          </div>
-        </article>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          {rest.map((project) => (
-            <article
-              key={project.id}
-              className="overflow-hidden rounded-xl border border-grape-700 bg-grape-950 text-left"
-            >
-              {project.models ? (
-                <ModelGallery models={project.models} />
-              ) : project.image ? (
-                <img
-                  src={project.image.src}
-                  alt={project.image.alt}
-                  className="aspect-video w-full bg-grape-900 object-cover"
-                />
-              ) : null}
-              <div className="p-6">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-                  {project.tag}
-                </p>
-                <h3 className="mt-2 font-pixel text-2xl text-white lg:text-3xl">{project.name}</h3>
-                {project.dates ? (
-                  <p className="mt-1 font-mono text-sm text-grape-400">{project.dates}</p>
-                ) : null}
-                <p className="mt-3 text-grape-300 lg:text-lg">{project.summary}</p>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {project.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="rounded-full bg-grape-900 px-3 py-1 text-xs text-grape-300 lg:text-sm"
-                    >
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+    <section id="projects" aria-labelledby="projects-title" className="border-t-2 border-ink">
+      <h2 id="projects-title" className="sr-only">
+        Projects
+      </h2>
+      <LucaStars project={lucaStars} />
+      <SpotifyRemote project={spotifyRemote} />
+      <div className="page">
+        <div className="grid gap-14 border-t border-rule pb-24 pt-14 lg:grid-cols-[7fr_5fr] lg:gap-20 lg:pb-28 lg:pt-16">
+          {smaller.map((project) => (
+            <SmallProject key={project.id} project={project} />
           ))}
         </div>
       </div>
-
     </section>
   );
 }

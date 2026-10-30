@@ -1,8 +1,26 @@
 import { useEffect, useState } from "react";
 
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(() => Boolean(window.matchMedia?.(REDUCED_MOTION).matches));
+
+  useEffect(() => {
+    const query = window.matchMedia?.(REDUCED_MOTION);
+    if (!query) return undefined;
+    const onChange = () => setReduced(query.matches);
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, []);
+
+  return reduced;
+}
+
 // Loads Google's <model-viewer> web component only when a 3D model is on the
 // page, so the three.js bundle stays out of the main JavaScript file.
 export function ModelViewer({ src, alt, className }) {
+  const reducedMotion = usePrefersReducedMotion();
+
   useEffect(() => {
     import("@google/model-viewer").catch(() => {});
   }, []);
@@ -12,7 +30,7 @@ export function ModelViewer({ src, alt, className }) {
       src={src}
       alt={alt}
       camera-controls
-      auto-rotate
+      {...(reducedMotion ? {} : { "auto-rotate": true })}
       disable-zoom
       touch-action="pan-y"
       interaction-prompt="none"
@@ -25,27 +43,27 @@ export function ModelViewer({ src, alt, className }) {
   );
 }
 
-// Several models of the same project, with tabs to switch between them.
-export function ModelGallery({ models }) {
+// Several models of the same project, with text buttons to switch between them.
+export function ModelGallery({ models, className = "" }) {
   const [active, setActive] = useState(0);
   const model = models[active];
 
   return (
-    <div className="relative bg-grape-900">
-      <ModelViewer src={model.src} alt={model.alt} className="block h-80 w-full" />
+    <div className={className}>
+      <ModelViewer src={model.src} alt={model.alt} className="block h-80 w-full bg-lcd-deep sm:h-[28rem] lg:h-[34rem]" />
       {models.length > 1 ? (
-        <div className="absolute inset-x-0 bottom-0 flex flex-wrap justify-center gap-2 p-3">
+        <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2" role="group" aria-label="Choose a 3D render">
           {models.map((item, index) => (
             <button
               key={item.src}
               type="button"
               onClick={() => setActive(index)}
               aria-pressed={index === active}
-              className={`rounded-full border px-3 py-1 font-mono text-xs transition ${
+              className={
                 index === active
-                  ? "border-gold bg-gold text-night"
-                  : "border-grape-700 bg-night/70 text-grape-300 hover:border-gold hover:text-white"
-              }`}
+                  ? "font-semibold underline decoration-accent decoration-2 underline-offset-4"
+                  : "text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+              }
             >
               {item.label}
             </button>

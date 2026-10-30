@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { CheckCircle2, Maximize2, Minimize2, RotateCcw, ShoppingCart, User } from "lucide-react";
+import { CheckCircle2, ShoppingCart, User } from "lucide-react";
 import { CartView } from "./CartView";
 import { CheckoutView } from "./CheckoutView";
 import { cartTotals, euro, findGame, LOGO, PROMO_CODES } from "./games";
@@ -10,7 +10,8 @@ import { button } from "./styles";
 const navItems = ["home", "games", "store", "about"];
 
 // A small, self-contained rebuild of the LucaStars webshop with sample data.
-export function LucaStarsDemo() {
+// `wide` uses the roomier shop layout on large screens even when not full screen.
+export function LucaStarsDemo({ wide = false }) {
   const [view, setView] = useState({ name: "home" });
   const [cart, setCart] = useState([]);
   const [promo, setPromo] = useState(null);
@@ -33,7 +34,7 @@ export function LucaStarsDemo() {
   const cartGames = cart.map(findGame);
 
   const shop = {
-    wide: expanded,
+    wide: wide || expanded,
     cartGames,
     promo,
     orders,
@@ -94,55 +95,36 @@ export function LucaStarsDemo() {
     <div
       className={
         expanded
-          ? "fixed inset-0 z-[60] flex items-center justify-center bg-night/80 p-2 backdrop-blur-sm sm:p-6"
-          : "h-[560px] lg:absolute lg:inset-0 lg:h-auto"
+          ? "fixed inset-0 z-[60] flex items-center justify-center bg-ink/90 p-2 sm:p-6"
+          : "h-[560px] lg:h-[640px]"
       }
       onClick={(event) => expanded && event.target === event.currentTarget && setExpanded(false)}
     >
       <div
-        className={`relative flex flex-col overflow-hidden bg-[#060a2b] ${
-          expanded
-            ? "h-full w-full max-w-6xl rounded-xl border border-grape-700 shadow-card"
-            : "h-full"
+        className={`relative flex h-full w-full flex-col overflow-hidden border-2 bg-[#060a2b] ${
+          expanded ? "max-w-6xl border-lcd" : "border-ink"
         }`}
         role="region"
         aria-label="LucaStars interactive demo"
       >
-        <div className="flex items-center gap-2 border-b border-white/10 bg-grape-950 px-3 py-2">
-          <span className="flex gap-1.5" aria-hidden="true">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-          </span>
-          <p className="min-w-0 flex-1 truncate rounded bg-night px-2 py-1 font-mono text-[11px] text-grape-400">
-            lucastars.demo/{view.name}
-          </p>
-          <span className="hidden font-mono text-[10px] uppercase tracking-widest text-gold sm:inline">
-            Interactive demo
-          </span>
-          <button
-            type="button"
-            onClick={reset}
-            className="rounded p-1 text-grape-400 hover:text-white"
-            aria-label="Reset demo"
-            title="Reset demo"
-          >
-            <RotateCcw size={15} />
+        <div className="flex items-center gap-5 bg-ink px-3 py-2 text-base text-lcd [&_:focus-visible]:outline-lcd">
+          <p className="min-w-0 flex-1 truncate">lucastars.demo/{view.name}</p>
+          <button type="button" onClick={reset} className="underline-offset-4 hover:underline">
+            Reset
           </button>
           <button
             type="button"
             onClick={() => setExpanded((value) => !value)}
-            className="rounded p-1 text-grape-400 hover:text-white"
-            aria-label={expanded ? "Exit full screen" : "Open demo full screen"}
-            title={expanded ? "Exit full screen (Esc)" : "Full screen"}
+            className="underline-offset-4 hover:underline"
+            title={expanded ? "Esc also closes it" : undefined}
           >
-            {expanded ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+            {expanded ? "Exit full screen" : "Full screen"}
           </button>
         </div>
 
         <div
           ref={scroller}
-          className="relative flex-1 overflow-y-auto bg-gradient-to-b from-[#060a2b] to-[#10153c] font-pixel text-white"
+          className="relative flex-1 overflow-y-auto bg-gradient-to-b from-[#060a2b] to-[#10153c] font-pixel text-white [&_:focus-visible]:outline-[#edad2e]"
         >
           {view.name === "checkout" ? (
             <header className="flex justify-center pt-3">
@@ -197,7 +179,7 @@ export function LucaStarsDemo() {
         </div>
 
         {placedOrder ? (
-          <div className="absolute inset-0 z-20 grid place-items-center bg-[#060a2b]/80 p-4 font-pixel text-white">
+          <div className="absolute inset-0 z-20 grid place-items-center bg-[#060a2b]/80 p-4 font-pixel text-white [&_:focus-visible]:outline-[#edad2e]">
             <div
               className="w-full max-w-xs border-2 border-[#edad2e] bg-[#20275e] p-5 text-center shadow-card"
               role="alertdialog"

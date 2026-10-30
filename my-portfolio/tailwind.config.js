@@ -4,6 +4,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Taken from the Sharp memory display in my Spotify remote:
+        // a reflective silver-grey surface with near-black pixels.
+        lcd: {
+          DEFAULT: "#d3d6cf",
+          deep: "#c4c8c0",
+        },
+        ink: {
+          DEFAULT: "#151813",
+          soft: "#41463e",
+        },
+        rule: "#8c9188",
+        accent: "#9c2c14",
+
+        // Old palette, still used by About, Experience, Contact and the footer
+        // until those sections are rebuilt.
         night: "#0c0918",
         grape: {
           950: "#160f2a",
@@ -20,12 +35,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        pixel: ['"Pixelify Sans"', "sans-serif"],
-        sans: ['"DM Sans"', "system-ui", "sans-serif"],
-        mono: ['"Roboto Mono"', "ui-monospace", "monospace"],
+        pixel: ['"Pixelify Sans"', "monospace"],
+        sans: ['"Atkinson Hyperlegible Next"', "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 48px rgba(240, 193, 75, 0.12)",
         card: "0 24px 60px rgba(0, 0, 0, 0.35)",
       },
     },
