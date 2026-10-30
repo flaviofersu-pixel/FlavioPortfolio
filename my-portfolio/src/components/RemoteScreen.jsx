@@ -47,6 +47,7 @@ function RemoteButton({ glyph, label, onClick, main = false }) {
 
 // A browser version of the remote's now-playing screen, laid out like the 3D render.
 export function RemoteScreen() {
+  // Always start on the first track (Blinding Lights, the one in the 3D render).
   const [position, setPosition] = useState({ index: 0, elapsed: 0 });
   const [playing, setPlaying] = useState(false);
   const track = remoteTracks[position.index];

@@ -1,11 +1,11 @@
 {
-  "short_name": "Flavio FS",
-  "name": "Flavio Fernandez Suarez | Portfolio",
+  "short_name": "Flavio",
+  "name": "Flavio Fernandez Suarez, full stack student",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     },
     {
       "src": "logo192.png",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#231942",
-  "background_color": "#0c0918"
+  "theme_color": "#d3d6cf",
+  "background_color": "#d3d6cf"
 }
