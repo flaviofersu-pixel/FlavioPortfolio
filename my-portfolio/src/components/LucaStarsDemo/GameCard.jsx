@@ -21,6 +21,7 @@ export function GameCard({ game, onOpen }) {
         <img
           src={game.image}
           alt=""
+          loading="lazy"
           className="aspect-square w-full object-cover transition hover:brightness-110"
         />
       </button>
@@ -44,7 +45,7 @@ export function SuggestionCard({ game, onOpen, onAdd }) {
   return (
     <article className="flex flex-col bg-[#20275e]">
       <button type="button" onClick={onOpen} className="block" tabIndex={-1} aria-hidden="true">
-        <img src={game.image} alt="" className="aspect-video w-full object-cover" />
+        <img src={game.image} alt="" loading="lazy" className="aspect-video w-full object-cover" />
       </button>
       <div className="flex flex-1 flex-col gap-2 p-2">
         <div className="flex items-start justify-between gap-2 text-[11px]">

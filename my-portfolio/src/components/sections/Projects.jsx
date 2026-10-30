@@ -1,5 +1,6 @@
 import { projects } from "../../data/content";
 import { LucaStarsDemo } from "../LucaStarsDemo/LucaStarsDemo";
+import { MediaSlot } from "../MediaSlot";
 import { ModelGallery } from "../ModelViewer";
 import { Prose, withTodos } from "../Prose";
 
@@ -8,6 +9,29 @@ function Tech({ text, className = "" }) {
     <p className={`text-ink-soft ${className}`}>
       <span className="font-semibold text-ink">Built with:</span> {withTodos(text)}
     </p>
+  );
+}
+
+// Real links become links; [TODO: ...] placeholders stay visible; entries without href are plain notes.
+function ProjectLinks({ links, className = "" }) {
+  return (
+    <ul className={`flex flex-wrap gap-x-6 gap-y-2 ${className}`}>
+      {links.map((link) => (
+        <li key={link.label}>
+          {!link.href ? (
+            <span className="text-ink-soft">{link.label}</span>
+          ) : link.href.startsWith("[TODO") ? (
+            <>
+              {link.label} {withTodos(link.href)}
+            </>
+          ) : (
+            <a href={link.href} className="text-link">
+              {link.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -32,6 +56,7 @@ function LucaStars({ project }) {
         <div className="max-w-[68ch] xl:pt-1">
           <p>{project.tryIt}</p>
           <Tech text={project.tech} className="mt-6" />
+          <ProjectLinks links={project.links} className="mt-4" />
         </div>
 
         <Prose paragraphs={project.story} className="xl:mt-6" />
@@ -59,6 +84,8 @@ function SpotifyRemote({ project }) {
         <div className="lg:col-start-1 lg:row-start-2">
           <Prose paragraphs={project.story} />
           <Tech text={project.tech} className="mt-6" />
+          <ProjectLinks links={project.links} className="mt-4" />
+          <MediaSlot media={project.media} className="mt-12 max-w-[68ch]" />
         </div>
       </div>
     </article>
@@ -74,6 +101,8 @@ function SmallProject({ project }) {
       <p className="mt-2 text-ink-soft">{project.kind}</p>
       <Prose paragraphs={project.story} className="mt-6" />
       <Tech text={project.tech} className="mt-6" />
+      <ProjectLinks links={project.links} className="mt-4" />
+      {project.media ? <MediaSlot media={project.media} className="mt-10" /> : null}
     </article>
   );
 }

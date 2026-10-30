@@ -40,6 +40,7 @@ const links = [
   { href: person.phoneHref, label: person.phone },
   { href: person.linkedin, label: "LinkedIn" },
   { href: person.github, label: "GitHub" },
+  { href: "/cv-flavio-fernandez.pdf", label: "CV (PDF)" },
 ];
 
 export function Contact() {

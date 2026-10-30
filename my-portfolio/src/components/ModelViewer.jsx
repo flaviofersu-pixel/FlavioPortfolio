@@ -1,24 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
-const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 const SWING_DEGREES = 35;
 const SWING_SECONDS = 12; // one full left, right and back cycle
 const RESUME_AFTER_MS = 3000;
 const PITCH = "80deg";
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(() => Boolean(window.matchMedia?.(REDUCED_MOTION).matches));
-
-  useEffect(() => {
-    const query = window.matchMedia?.(REDUCED_MOTION);
-    if (!query) return undefined;
-    const onChange = () => setReduced(query.matches);
-    query.addEventListener("change", onChange);
-    return () => query.removeEventListener("change", onChange);
-  }, []);
-
-  return reduced;
-}
 
 // Swings the camera left and right around the front so the screen stays in view.
 // A sine wave slows down at both ends by itself, which gives the easing.
@@ -103,8 +89,24 @@ export function ModelViewer({ src, alt, className }) {
   const reducedMotion = usePrefersReducedMotion();
   useSwing(ref, !reducedMotion);
 
+  // The library is large, so only fetch it when the viewer is about to scroll into view.
   useEffect(() => {
-    import("@google/model-viewer").catch(() => {});
+    const load = () => import("@google/model-viewer").catch(() => {});
+    const viewer = ref.current;
+    if (!viewer || !("IntersectionObserver" in window)) {
+      load();
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        load();
+      },
+      { rootMargin: "600px" }
+    );
+    observer.observe(viewer);
+    return () => observer.disconnect();
   }, []);
 
   return (

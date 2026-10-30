@@ -21,6 +21,10 @@ export function Hero() {
           {hero.sentence}
         </p>
         <p className="mt-5 max-w-[60ch] text-ink-soft">{hero.intro}</p>
+        <a href="#contact" className="text-link mt-3 inline-block">
+          {hero.internship}
+          <span aria-hidden="true"> →</span>
+        </a>
         <p className="mt-3 max-w-[60ch] text-ink-soft">
           <span className="font-semibold text-ink">On my workbench:</span> {withTodos(workbench)}
         </p>

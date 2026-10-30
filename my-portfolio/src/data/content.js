@@ -12,6 +12,7 @@ export const person = {
 export const hero = {
   sentence: "I build checkouts for web shops and solder buttons onto ESP32 boards.",
   intro: "I’m in my second year of a software engineering degree, and I live in Almere.",
+  internship: "Looking for a full stack internship from February 2027",
   link: "Try the LucaStars demo",
   screenCaption: "The now-playing screen from my Spotify remote, in the browser. The three buttons work.",
   screenLink: "How I built the remote",
@@ -37,7 +38,7 @@ export const about = {
   ],
 };
 
-// The only place on the site with the internship date and contact details.
+// The only place on the site with contact details. The hero links here with the internship date.
 export const contact = {
   heading: "I’m looking for a full stack internship from February 2027.",
   text: "Email is the easiest way to reach me. [TODO: where you can work, for example the Amsterdam area, hybrid or remote.]",
@@ -59,6 +60,10 @@ export const projects = [
     tryIt:
       "This is a smaller rebuild of the shop with sample data, running right here in the page. Add a game to your cart, open the Discount code tab, enter LUCA10 and place an order. It shows up under My profile. Nothing is charged.",
     tech: "[TODO: tech stack]",
+    links: [
+      { label: "Live site", href: "[TODO: url]" },
+      { label: "GitHub", href: "[TODO: url]" },
+    ],
   },
   {
     id: "spotify-remote",
@@ -70,6 +75,14 @@ export const projects = [
       "[TODO: one constraint, for example the display size or power use.] [TODO: one decision you made and why, for example why a Sharp memory display.]",
     ],
     tech: "C++, Arduino framework, PlatformIO, Wokwi",
+    links: [{ label: "GitHub", href: "[TODO: url]" }],
+    // Put the file in public/projects/, then set src, type ("image" or "video") and alt.
+    media: {
+      src: "",
+      type: "video",
+      alt: "",
+      placeholder: "[TODO: photo or short muted looping video of the real remote]",
+    },
     models: [
       {
         label: "The remote",
@@ -93,6 +106,10 @@ export const projects = [
       "[TODO: one constraint, for example what a Teams app can and can’t do.] [TODO: one decision from your research and why.] [TODO: where the project stands now.]",
     ],
     tech: "Microsoft Teams app, [TODO: tech stack]",
+    links: [
+      { label: "Live site", href: "[TODO: url]" },
+      { label: "Code is private (client project)" },
+    ],
   },
   {
     id: "angels-treasure",
@@ -101,9 +118,20 @@ export const projects = [
     story: [
       "Angel’s Treasure is a small handmade fashion shop in Amsterdam that sells through Vinted and Depop. I made mid-fi and hi-fi designs first, then built a one-page site in HTML, CSS and JavaScript with a product filter and a custom order form.",
       "I set up Decap CMS so the owner can add products and markets, and Netlify Forms to handle the order form.",
-      "[TODO: one constraint, for example budget or hosting.] [TODO: why Decap CMS over other options?] [TODO: is the site live? Add the link.]",
+      "[TODO: one constraint, for example budget or hosting.] [TODO: why Decap CMS over other options?]",
     ],
     tech: "HTML, CSS, JavaScript, Netlify Forms, Decap CMS",
+    links: [
+      { label: "Live site", href: "[TODO: url]" },
+      { label: "GitHub", href: "[TODO: url]" },
+    ],
+    // Put the screenshot in public/projects/, then set src and alt.
+    media: {
+      src: "",
+      type: "image",
+      alt: "",
+      placeholder: "[TODO: screenshot of the Angel’s Treasure site]",
+    },
   },
 ];
 
