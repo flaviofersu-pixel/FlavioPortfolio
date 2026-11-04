@@ -13,7 +13,7 @@ const clock = (seconds) =>
   seconds == null ? "-:--" : `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
 
 // Button glyphs are drawn as SVG so they never render as emoji.
-const glyphs = {
+export const glyphs = {
   previous: (
     <>
       <rect x="2" y="3" width="2" height="10" />
@@ -35,17 +35,19 @@ const glyphs = {
   ),
 };
 
-function RemoteButton({ glyph, label, onClick, main = false }) {
+// Also used by the build log in the Spotify remote project. Disabled uses aria-disabled
+// instead of the disabled attribute, so keyboard focus stays on the button.
+export function RemoteButton({ glyph, label, onClick, main = false, disabled = false, className = "" }) {
+  let look = "border-ink bg-lcd-deep hover:bg-ink hover:text-lcd";
+  if (main) look = "border-accent bg-accent text-lcd hover:border-ink hover:bg-ink";
+  if (disabled) look = "cursor-not-allowed border-rule bg-lcd-deep text-rule";
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
       aria-label={label}
-      className={`grid h-14 w-14 place-items-center rounded-full border-2 ${
-        main
-          ? "border-accent bg-accent text-lcd hover:border-ink hover:bg-ink"
-          : "border-ink bg-lcd-deep hover:bg-ink hover:text-lcd"
-      }`}
+      aria-disabled={disabled || undefined}
+      className={`grid h-14 w-14 place-items-center rounded-full border-2 ${look} ${className}`}
     >
       <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true" shapeRendering="crispEdges">
         {glyphs[glyph]}

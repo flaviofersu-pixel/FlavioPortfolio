@@ -46,13 +46,6 @@ export default {
     tryDemo: "Prueba la demo", // review
     previewAlt: "La página de inicio de la tienda LucaStars en la demo", // review
   },
-  models: {
-    choose: "Elige una vista 3D", // review
-    remote: {
-      label: "El control remoto", // review
-      alt: "Modelo 3D interactivo del Spotify mini remote con su pantalla y sus tres botones", // review
-    },
-  },
   media: {
     play: "Reproducir video", // review
     pause: "Pausar video", // review
@@ -79,17 +72,60 @@ export default {
       kind: "Proyecto personal de hardware, desde 2026", // review
       story: [
         "Un pequeño control remoto para Spotify. Funciona con un ESP32-C3, una pantalla Sharp memory display y tres botones: reproducir/pausar, siguiente y anterior. La pantalla muestra lo que está sonando. Siempre quise un iPod, porque me gusta tener una pantalla aparte solo para mi música. Ya tengo un e-reader pequeño y quería algo igual de pequeño para la música, para cambiar de canción en el autobús o en el tren sin sacar el teléfono.", // review
-        "Escribí el primer prototipo en C++ con el framework de Arduino y PlatformIO, y lo probé en el simulador Wokwi. Después lo probé en una protoboard, y ahora la pantalla ya está soldada al microcontrolador. Y ya tiene su propia carcasa.", // review
+        "Escribí el primer prototipo en C++ con el framework de Arduino y lo probé en una protoboard. Ahora la pantalla está soldada al microcontrolador y tiene su propia carcasa.", // review
         "Quería que fuera portátil, con una batería que durara más que la de un teléfono. Por eso elegí una pantalla Sharp memory display: consume muy poca energía, así que no necesito una batería más grande y todo el control remoto sigue siendo pequeño.", // review
       ],
-      media: {
-        case: {
-          alt: "El control remoto de Spotify en una carcasa negra con textura, con tres botones encima de la pantalla. La pantalla muestra This Winter de innlet, con un gato en pixel art como portada.", // review
-          caption: "Cómo está ahora: el control remoto en su carcasa.", // review
+      buildLog: {
+        label: "Diario de montaje", // review
+        stepsLabel: "Pasos del montaje", // review
+        step: "Paso", // review
+        announce: "Paso {n} de {total}: {title}", // review
+        previous: "Paso anterior", // review
+        next: "Paso siguiente", // review
+        partsHint: "Toca un número en la foto o una pieza de abajo.", // review
+        steps: {
+          design: {
+            title: "Diseño", // review
+            date: "[TODO: month] 2026",
+            text: "[TODO: why I made the 3D model first]",
+            alt: "Modelo 3D interactivo del Spotify mini remote con su pantalla y sus tres botones", // review
+          },
+          breadboard: {
+            title: "Protoboard", // review
+            date: "[TODO: month] 2026",
+            text: "Me salté el simulador y fui directo a una protoboard con Arduino, la pantalla real y los botones. [TODO: one thing that went wrong and how I fixed it]", // review
+            alt: "Video del prototipo en la protoboard. Un dedo pulsa los botones y la pantalla Sharp muestra la canción que está sonando.", // review
+          },
+          soldering: {
+            title: "Soldadura", // review
+            date: "[TODO: month] 2026",
+            text: "La pantalla ya está soldada al microcontrolador. [TODO: one detail]", // review
+            alt: "La pantalla Sharp memory display conectada con cables de colores al microcontrolador XIAO dentro de la carcasa abierta, con el puerto USB-C delante.", // review
+          },
+          finished: {
+            title: "Terminado", // review
+            date: "[TODO: month] 2026",
+            text: "Así está ahora: el control remoto en su propia carcasa, lo bastante pequeño para llevarlo en el autobús o en el tren.", // review
+            alt: "El control remoto de Spotify en una carcasa negra con textura, con tres botones encima de la pantalla. La pantalla muestra This Winter de innlet, con un gato en pixel art como portada.", // review
+          },
         },
-        breadboard: {
-          alt: "Video del prototipo en la protoboard. Un dedo pulsa los botones y la pantalla Sharp muestra la canción que está sonando.", // review
-          caption: "El prototipo en la protoboard, controlado con sus botones.", // review
+        parts: {
+          buttons: {
+            name: "Tres botones", // review
+            text: "Anterior, reproducir/pausar y siguiente.", // review
+          },
+          display: {
+            name: "Pantalla Sharp memory display", // review
+            text: "Consume muy poca energía, así que la batería no tiene que ser grande.", // review
+          },
+          usbc: {
+            name: "USB-C", // review
+            text: "[TODO]",
+          },
+          case: {
+            name: "La carcasa", // review
+            text: "[TODO: how I made the case and what is inside]",
+          },
         },
       },
     },

@@ -46,13 +46,6 @@ export default {
     tryDemo: "Try the demo",
     previewAlt: "The LucaStars shop home page in the demo",
   },
-  models: {
-    choose: "Choose a 3D render",
-    remote: {
-      label: "The remote",
-      alt: "Interactive 3D model of the Spotify mini remote with its display and three buttons",
-    },
-  },
   media: {
     play: "Play video",
     pause: "Pause video",
@@ -79,17 +72,60 @@ export default {
       kind: "Personal hardware project, since 2026",
       story: [
         "A small remote for Spotify. It runs on an ESP32-C3 with a Sharp memory display and three buttons: play/pause, next and previous. The screen shows what’s playing. I always wanted an iPod, because I like having a separate screen just for my music. I already have a small e-reader, and I wanted something just as small for music, so I can switch songs on the bus or the train without taking out my phone.",
-        "I wrote the first prototype in C++ with the Arduino framework and PlatformIO, and tested it in the Wokwi simulator. After that I tested it on a breadboard, and now the screen is soldered to the microcontroller. It also has its own case.",
+        "I wrote the first prototype in C++ with the Arduino framework and tested it on a breadboard. Now the screen is soldered to the microcontroller, and it has its own case.",
         "I wanted it to be portable, with a battery that lasts longer than a phone’s. That’s why I chose a Sharp memory display: it uses very little power, so I don’t need a bigger battery and the whole remote stays small.",
       ],
-      media: {
-        case: {
-          alt: "The Spotify mini remote in a black textured case, with three buttons above the screen. The screen shows This Winter by innlet, with a pixel-art cat as the cover.",
-          caption: "Where it is now: the remote in its case.",
+      buildLog: {
+        label: "Build log",
+        stepsLabel: "Build steps",
+        step: "Step",
+        announce: "Step {n} of {total}: {title}",
+        previous: "Previous step",
+        next: "Next step",
+        partsHint: "Tap a number on the photo, or a part below.",
+        steps: {
+          design: {
+            title: "Design",
+            date: "[TODO: month] 2026",
+            text: "[TODO: why I made the 3D model first]",
+            alt: "Interactive 3D model of the Spotify mini remote with its display and three buttons",
+          },
+          breadboard: {
+            title: "Breadboard",
+            date: "[TODO: month] 2026",
+            text: "I skipped the simulator and went straight to a breadboard with Arduino, the real screen and the buttons. [TODO: one thing that went wrong and how I fixed it]",
+            alt: "Video of the breadboard prototype. A finger presses the buttons, and the Sharp display shows the song that’s playing.",
+          },
+          soldering: {
+            title: "Soldering",
+            date: "[TODO: month] 2026",
+            text: "The screen is now soldered to the microcontroller. [TODO: one detail]",
+            alt: "The Sharp memory display wired with coloured wires to the XIAO microcontroller inside the open case, with the USB-C port at the front.",
+          },
+          finished: {
+            title: "Finished",
+            date: "[TODO: month] 2026",
+            text: "Where it is now: the remote in its own case, small enough to carry on the bus or the train.",
+            alt: "The Spotify mini remote in a black textured case, with three buttons above the screen. The screen shows This Winter by innlet, with a pixel-art cat as the cover.",
+          },
         },
-        breadboard: {
-          alt: "Video of the breadboard prototype. A finger presses the buttons, and the Sharp display shows the song that’s playing.",
-          caption: "The breadboard prototype, controlled with its buttons.",
+        parts: {
+          buttons: {
+            name: "Three buttons",
+            text: "Previous, play/pause and next.",
+          },
+          display: {
+            name: "Sharp memory display",
+            text: "It uses very little power, so the battery does not need to be big.",
+          },
+          usbc: {
+            name: "USB-C",
+            text: "[TODO]",
+          },
+          case: {
+            name: "The case",
+            text: "[TODO: how I made the case and what is inside]",
+          },
         },
       },
     },

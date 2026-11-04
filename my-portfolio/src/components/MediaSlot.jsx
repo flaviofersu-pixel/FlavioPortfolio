@@ -4,7 +4,8 @@ import { withTodos } from "./Prose";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 // A muted looping video that only autoplays without reduced motion, with a visible pause button.
-function LoopingVideo({ src, poster, alt }) {
+// With overlay, the video fills its (relative) parent and the button sits on top of it.
+export function LoopingVideo({ src, poster, alt, overlay = false }) {
   const { t } = useLanguage();
   const ref = useRef(null);
   const reducedMotion = usePrefersReducedMotion();
@@ -29,12 +30,16 @@ function LoopingVideo({ src, poster, alt }) {
         loop
         playsInline
         preload="metadata"
-        className="block w-full border-2 border-ink"
+        className={overlay ? "absolute inset-0 h-full w-full object-cover" : "block w-full border-2 border-ink"}
       />
       <button
         type="button"
         onClick={() => setPlaying((value) => !value)}
-        className="mt-2 text-base underline-offset-4 hover:underline"
+        className={
+          overlay
+            ? "absolute bottom-3 left-3 min-h-11 bg-ink px-3 text-base text-lcd hover:bg-accent"
+            : "mt-2 text-base underline-offset-4 hover:underline"
+        }
       >
         {playing ? t("media.pause") : t("media.play")}
       </button>
@@ -43,7 +48,7 @@ function LoopingVideo({ src, poster, alt }) {
 }
 
 // A photo, screenshot or video, or a highlighted placeholder until the file exists.
-export function MediaSlot({ media, alt, caption, placeholder, className = "" }) {
+export function MediaSlot({ media, alt, placeholder, className = "" }) {
   if (!media.src) {
     return (
       <div className={`grid aspect-video place-items-center border-2 border-dashed border-rule p-6 text-center ${className}`}>
@@ -59,7 +64,6 @@ export function MediaSlot({ media, alt, caption, placeholder, className = "" }) 
       ) : (
         <img src={media.src} alt={alt} loading="lazy" className="block w-full border-2 border-ink" />
       )}
-      {caption ? <figcaption className="mt-2 text-ink-soft">{caption}</figcaption> : null}
     </figure>
   );
 }

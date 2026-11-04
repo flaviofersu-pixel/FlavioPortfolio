@@ -46,13 +46,6 @@ export default {
     tryDemo: "Probeer de demo", // review
     previewAlt: "De homepagina van de LucaStars-winkel in de demo", // review
   },
-  models: {
-    choose: "Kies een 3D-weergave", // review
-    remote: {
-      label: "De afstandsbediening", // review
-      alt: "Interactief 3D-model van de Spotify mini remote met het scherm en de drie knoppen", // review
-    },
-  },
   media: {
     play: "Video afspelen", // review
     pause: "Video pauzeren", // review
@@ -79,17 +72,60 @@ export default {
       kind: "Eigen hardwareproject, sinds 2026", // review
       story: [
         "Een kleine afstandsbediening voor Spotify. Hij draait op een ESP32-C3 met een Sharp memory display en drie knoppen: afspelen/pauzeren, volgende en vorige. Het scherm laat zien wat er speelt. Ik wilde altijd al een iPod, omdat ik het fijn vind om een apart scherm voor mijn muziek te hebben. Ik heb al een kleine e-reader en wilde iets net zo kleins voor muziek, zodat ik in de bus of trein van nummer kan wisselen zonder mijn telefoon te pakken.", // review
-        "Het eerste prototype heb ik in C++ geschreven met het Arduino-framework en PlatformIO, en getest in de Wokwi-simulator. Daarna heb ik hem op een breadboard getest, en inmiddels zit het scherm vastgesoldeerd op de microcontroller. Hij zit nu in zijn eigen behuizing.", // review
+        "Het eerste prototype heb ik in C++ geschreven met het Arduino-framework en getest op een breadboard. Inmiddels zit het scherm vastgesoldeerd op de microcontroller, en heeft hij een eigen behuizing.", // review
         "Ik wilde dat hij draagbaar was, met een batterij die langer meegaat dan die van een telefoon. Daarom koos ik een Sharp memory display: dat verbruikt heel weinig stroom, dus ik heb geen grotere batterij nodig en de hele afstandsbediening blijft klein.", // review
       ],
-      media: {
-        case: {
-          alt: "De Spotify-afstandsbediening in een zwarte behuizing met structuur, met drie knoppen boven het scherm. Het scherm toont This Winter van innlet, met een pixelart-kat als hoes.", // review
-          caption: "Zo ver is hij nu: de afstandsbediening in zijn behuizing.", // review
+      buildLog: {
+        label: "Bouwlog", // review
+        stepsLabel: "Bouwstappen", // review
+        step: "Stap", // review
+        announce: "Stap {n} van {total}: {title}", // review
+        previous: "Vorige stap", // review
+        next: "Volgende stap", // review
+        partsHint: "Tik op een nummer op de foto, of op een onderdeel hieronder.", // review
+        steps: {
+          design: {
+            title: "Ontwerp", // review
+            date: "[TODO: month] 2026",
+            text: "[TODO: why I made the 3D model first]",
+            alt: "Interactief 3D-model van de Spotify mini remote met het scherm en de drie knoppen", // review
+          },
+          breadboard: {
+            title: "Breadboard", // review
+            date: "[TODO: month] 2026",
+            text: "Ik heb de simulator overgeslagen en ben meteen begonnen op een breadboard met Arduino, het echte scherm en de knoppen. [TODO: one thing that went wrong and how I fixed it]", // review
+            alt: "Video van het prototype op het breadboard. Een vinger drukt op de knoppen en het Sharp-scherm toont het nummer dat speelt.", // review
+          },
+          soldering: {
+            title: "Solderen", // review
+            date: "[TODO: month] 2026",
+            text: "Het scherm is nu vastgesoldeerd op de microcontroller. [TODO: one detail]", // review
+            alt: "Het Sharp memory display met gekleurde draden verbonden met de XIAO-microcontroller in de open behuizing, met de USB-C-poort aan de voorkant.", // review
+          },
+          finished: {
+            title: "Klaar", // review
+            date: "[TODO: month] 2026",
+            text: "Zo ver is hij nu: de afstandsbediening in zijn eigen behuizing, klein genoeg om mee te nemen in de bus of de trein.", // review
+            alt: "De Spotify-afstandsbediening in een zwarte behuizing met structuur, met drie knoppen boven het scherm. Het scherm toont This Winter van innlet, met een pixelart-kat als hoes.", // review
+          },
         },
-        breadboard: {
-          alt: "Video van het prototype op het breadboard. Een vinger drukt op de knoppen en het Sharp-scherm toont het nummer dat speelt.", // review
-          caption: "Het prototype op het breadboard, bediend met de knoppen.", // review
+        parts: {
+          buttons: {
+            name: "Drie knoppen", // review
+            text: "Vorige, afspelen/pauzeren en volgende.", // review
+          },
+          display: {
+            name: "Sharp memory display", // review
+            text: "Het verbruikt heel weinig stroom, dus de batterij hoeft niet groot te zijn.", // review
+          },
+          usbc: {
+            name: "USB-C", // review
+            text: "[TODO]",
+          },
+          case: {
+            name: "De behuizing", // review
+            text: "[TODO: how I made the case and what is inside]",
+          },
         },
       },
     },

@@ -25,6 +25,16 @@ module.exports = {
       boxShadow: {
         card: "0 24px 60px rgba(0, 0, 0, 0.35)",
       },
+      // Used with motion-safe: only, so nothing fades when reduced motion is on.
+      keyframes: {
+        fade: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+      },
+      animation: {
+        fade: "fade 180ms ease-out",
+      },
     },
   },
   plugins: [],

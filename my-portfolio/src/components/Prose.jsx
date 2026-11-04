@@ -1,7 +1,7 @@
-// Shows [TODO: ...] placeholders as inverted text so they are easy to spot.
+// Shows [TODO] and [TODO: ...] placeholders as inverted text so they are easy to spot.
 export function withTodos(text) {
-  return text.split(/(\[TODO:[^\]]*\])/).map((part, index) =>
-    part.startsWith("[TODO:") ? (
+  return text.split(/(\[TODO(?::[^\]]*)?\])/).map((part, index) =>
+    part.startsWith("[TODO") ? (
       <mark key={index} className="bg-ink px-1 text-lcd">
         {part}
       </mark>

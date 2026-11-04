@@ -25,20 +25,32 @@ export const projects = [
   {
     id: "spotify-remote",
     name: "Spotify mini remote",
-    tech: "C++, Arduino framework, PlatformIO, Wokwi",
+    tech: "C++, Arduino",
     links: [{ type: "github", href: "[TODO: url]" }],
-    // Files are in public/projects/. Alt text and captions are in src/i18n under media.<key>.
-    media: [
-      { key: "case", src: "/projects/spotify-remote-case.jpg", type: "image" },
+    // The build log, in order. Texts and alt text are in src/i18n under projects.spotify-remote.buildLog.
+    // type: "model" (3D, only loaded when the step opens), "video" or "image". thumb is the small frame
+    // in the step row (defaults to poster, then src). A missing file shows a frame with the step name.
+    // parts: numbered dots on the photo; x and y are percentages from the photo's left and top edge.
+    buildLog: [
+      { key: "design", type: "model", src: "/projects/spotify-gadget.glb", thumb: "/images/remote/design.jpg" },
       {
         key: "breadboard",
+        type: "video",
         src: "/projects/spotify-remote.mp4",
         poster: "/projects/spotify-remote-poster.jpg",
-        type: "video",
       },
-    ],
-    models: [
-      { key: "remote", src: "/projects/spotify-gadget.glb" },
+      { key: "soldering", type: "image", src: "/images/remote/soldering.jpg" },
+      {
+        key: "finished",
+        type: "image",
+        src: "/projects/spotify-remote-case.jpg",
+        parts: [
+          { key: "buttons", x: 48, y: 25 },
+          { key: "display", x: 48, y: 52 },
+          { key: "usbc", x: 9, y: 56 },
+          { key: "case", x: 76, y: 77 },
+        ],
+      },
     ],
   },
   {

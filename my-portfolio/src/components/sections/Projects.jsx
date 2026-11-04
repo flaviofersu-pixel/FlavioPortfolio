@@ -1,8 +1,8 @@
 import { projects } from "../../data/content";
 import { useLanguage } from "../../i18n";
+import { BuildLog } from "../BuildLog";
 import { LucaStarsDemo } from "../LucaStarsDemo/LucaStarsDemo";
 import { MediaSlot } from "../MediaSlot";
-import { ModelGallery } from "../ModelViewer";
 import { Prose, withTodos } from "../Prose";
 
 function Tech({ text, className = "" }) {
@@ -41,23 +41,8 @@ function ProjectLinks({ links, className = "" }) {
   );
 }
 
-// media is one item, or a list shown side by side; each list item has a key for its text in src/i18n.
 function ProjectMedia({ project, className }) {
   const { t } = useLanguage();
-  if (Array.isArray(project.media)) {
-    return (
-      <div className={`grid items-start gap-6 sm:grid-cols-2 ${className}`}>
-        {project.media.map((item) => (
-          <MediaSlot
-            key={item.key}
-            media={item}
-            alt={t(`projects.${project.id}.media.${item.key}.alt`)}
-            caption={t(`projects.${project.id}.media.${item.key}.caption`)}
-          />
-        ))}
-      </div>
-    );
-  }
   return (
     <MediaSlot
       media={project.media}
@@ -103,24 +88,18 @@ function SpotifyRemote({ project }) {
   const { t } = useLanguage();
   return (
     <article id={project.id} aria-labelledby={`${project.id}-title`} className="page">
-      <div className="grid gap-x-16 gap-y-10 border-t border-rule py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:py-24">
-        <header className="lg:col-start-1 lg:row-start-1">
+      <div className="border-t border-rule py-16 lg:py-24">
+        <header>
           <h3 id={`${project.id}-title`} className="font-pixel text-[clamp(2.125rem,6vw,4rem)] font-medium leading-none">
             {project.name}
           </h3>
           <p className="mt-3 text-ink-soft">{t(`projects.${project.id}.kind`)}</p>
         </header>
-
-        <ModelGallery
-          models={project.models}
-          className="min-w-0 lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start"
-        />
-
-        <div className="lg:col-start-1 lg:row-start-2">
-          <Prose paragraphs={t(`projects.${project.id}.story`)} />
-          <Tech text={project.tech} className="mt-6" />
-          <ProjectLinks links={project.links} className="mt-4" />
-          <ProjectMedia project={project} className="mt-12 max-w-[68ch]" />
+        <Prose paragraphs={t(`projects.${project.id}.story`)} className="mt-8" />
+        <Tech text={project.tech} className="mt-6" />
+        <ProjectLinks links={project.links} className="mt-4" />
+        <div className="mt-12 lg:mt-16">
+          <BuildLog projectId={project.id} steps={project.buildLog} />
         </div>
       </div>
     </article>
