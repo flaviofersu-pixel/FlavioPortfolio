@@ -41,8 +41,23 @@ function ProjectLinks({ links, className = "" }) {
   );
 }
 
+// media is one item, or a list shown side by side; each list item has a key for its text in src/i18n.
 function ProjectMedia({ project, className }) {
   const { t } = useLanguage();
+  if (Array.isArray(project.media)) {
+    return (
+      <div className={`grid items-start gap-6 sm:grid-cols-2 ${className}`}>
+        {project.media.map((item) => (
+          <MediaSlot
+            key={item.key}
+            media={item}
+            alt={t(`projects.${project.id}.media.${item.key}.alt`)}
+            caption={t(`projects.${project.id}.media.${item.key}.caption`)}
+          />
+        ))}
+      </div>
+    );
+  }
   return (
     <MediaSlot
       media={project.media}

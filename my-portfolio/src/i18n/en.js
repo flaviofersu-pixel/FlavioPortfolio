@@ -22,7 +22,7 @@ export default {
     internship: "Looking for a full stack internship from February 2027",
     workbenchLabel: "On my workbench:",
     // Edit this line (in all three languages) whenever something new lands on the desk.
-    workbench: "[TODO: what’s on your workbench right now?]",
+    workbench: "The final version of my Spotify mini remote.",
     demoLink: "Try the LucaStars demo",
     screenCaption: "The now-playing screen from my Spotify remote, in the browser. The three buttons work.",
     screenLink: "How I built the remote",
@@ -52,10 +52,6 @@ export default {
       label: "The remote",
       alt: "Interactive 3D model of the Spotify mini remote with its display and three buttons",
     },
-    iphone: {
-      label: "On an iPhone 16 Pro",
-      alt: "Interactive 3D model of the Spotify mini remote attached to the back of an iPhone 16 Pro",
-    },
   },
   media: {
     play: "Play video",
@@ -68,14 +64,13 @@ export default {
       live: "Live site",
       github: "GitHub",
       private: "Code is private (client project)",
+      school: "School project, so the code can’t be shared",
     },
     lucastars: {
       kind: "School project",
       story: [
-        "LucaStars is a digital game store, made as a school project. You can browse the catalog, pick up deals, fill a cart, check out and look back at your orders on your profile. [TODO: solo or team? If team, how many people and which parts did you build yourself?]",
-        "The cart adds VAT, takes off discounts and accepts promo codes, and the same total has to come out at checkout and later in the order history. [TODO: one constraint you worked within, for example a required stack, a deadline or the brief.]",
-        "[TODO: one decision you made and why, for example where the price calculation lives.]",
-        "[TODO: the result, for example the grade, feedback you got or what you would change now.]",
+        "LucaStars is a digital game store, made as a school project. You can browse the catalog, pick up deals, fill a cart, check out and look back at your orders on your profile. We were a team of five. I built the shopping cart, the games API, the profile system and the database, and helped with the checkout.",
+        "The cart adds VAT, takes off discounts and accepts promo codes, and the same total has to come out at checkout and later in the order history.",
       ],
       tryIt:
         "This is a smaller rebuild of the shop with sample data, running right here in the page. Add a game to your cart, open the Discount code tab, enter LUCA10 and place an order. It shows up under My profile. Nothing is charged.",
@@ -83,30 +78,34 @@ export default {
     "spotify-remote": {
       kind: "Personal hardware project, since 2026",
       story: [
-        "A small remote for Spotify. It runs on an ESP32-C3 with a Sharp memory display and three buttons: play/pause, next and previous. The screen shows what’s playing. [TODO: why did you want to build it?]",
-        "I wrote the first prototype in C++ with the Arduino framework and PlatformIO, and tested it in the Wokwi simulator. [TODO: has it run on real hardware yet?]",
-        "[TODO: one constraint, for example the display size or power use.] [TODO: one decision you made and why, for example why a Sharp memory display.]",
+        "A small remote for Spotify. It runs on an ESP32-C3 with a Sharp memory display and three buttons: play/pause, next and previous. The screen shows what’s playing. I always wanted an iPod, because I like having a separate screen just for my music. I already have a small e-reader, and I wanted something just as small for music, so I can switch songs on the bus or the train without taking out my phone.",
+        "I wrote the first prototype in C++ with the Arduino framework and PlatformIO, and tested it in the Wokwi simulator. After that I tested it on a breadboard, and now the screen is soldered to the microcontroller. It also has its own case.",
+        "I wanted it to be portable, with a battery that lasts longer than a phone’s. That’s why I chose a Sharp memory display: it uses very little power, so I don’t need a bigger battery and the whole remote stays small.",
       ],
       media: {
-        // Describe the photo or video once you add it (src goes in src/data/content.js).
-        alt: "",
-        placeholder: "[TODO: photo or short muted looping video of the real remote]",
+        case: {
+          alt: "The Spotify mini remote in a black textured case, with three buttons above the screen. The screen shows This Winter by innlet, with a pixel-art cat as the cover.",
+          caption: "Where it is now: the remote in its case.",
+        },
+        breadboard: {
+          alt: "Video of the breadboard prototype. A finger presses the buttons, and the Sharp display shows the song that’s playing.",
+          caption: "The breadboard prototype, controlled with its buttons.",
+        },
       },
     },
     "climate-impact-tool": {
       kind: "School project for the City of Amsterdam, since 2026",
       story: [
-        "The City of Amsterdam has a climate impact tool, and our job is to make it reusable for other organizations. [TODO: one sentence on what the tool does.] We’re a team of five, and I’m one of the two full stack developers.",
+        "The City of Amsterdam has a climate impact tool, and our job is to make it reusable for other organizations. It shows how much climate impact the files stored in OneDrive have, and we also want to make people aware of how much their storage affects the climate. We’re a team of five, and I’m one of the two full stack developers.",
         "I researched how to build it as a Microsoft Teams app. After that, the other developer and I designed and built it together. I also work with the client directly.",
-        "[TODO: one constraint, for example what a Teams app can and can’t do.] [TODO: one decision from your research and why.] [TODO: where the project stands now.]",
+        "The tool was supposed to delete files from OneDrive. But at the City of Amsterdam, employees aren’t allowed to delete documents because of the GDPR (AVG) rules. So I came up with moving the files from OneDrive to SharePoint instead. That way there are fewer copies of each document, which saves CO₂.",
       ],
     },
     "angels-treasure": {
       kind: "Freelance, since 2026",
       story: [
         "Angel’s Treasure is a small handmade fashion shop in Amsterdam that sells through Vinted and Depop. I made mid-fi and hi-fi designs first, then built a one-page site in HTML, CSS and JavaScript with a product filter and a custom order form.",
-        "I set up Decap CMS so the owner can add products and markets, and Netlify Forms to handle the order form.",
-        "[TODO: one constraint, for example budget or hosting.] [TODO: why Decap CMS over other options?]",
+        "I set up Decap CMS so the owner can add products and markets. I chose it because it’s easy to use without much technical knowledge. Netlify Forms handles the order form.",
       ],
       media: {
         // Describe the screenshot once you add it (src goes in src/data/content.js).
@@ -118,7 +117,7 @@ export default {
   about: {
     heading: "About",
     photoAlt: "Portrait of Flavio",
-    lead: "Outside of school I work with hardware: Arduino and ESP32 boards, soldering, and my own home lab. [TODO: what runs on your home lab?] I speak Spanish, English and Dutch.",
+    lead: "Outside of school I work with hardware: Arduino and ESP32 boards, soldering, and my own home lab. I speak Spanish, English and Dutch.",
     timeline: [
       {
         when: "Since Sept 2026",
@@ -135,7 +134,7 @@ export default {
   },
   contact: {
     heading: "I’m looking for a full stack internship from February 2027.",
-    text: "Email is the easiest way to reach me. [TODO: where you can work, for example the Amsterdam area, hybrid or remote.]",
+    text: "Email is the easiest way to reach me.",
     copy: "Copy email",
     copied: "Copied",
     copyFailed: "Couldn’t copy, select the address instead",

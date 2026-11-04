@@ -22,7 +22,7 @@ export default {
     intro: "Ik zit in het tweede jaar van een opleiding software engineering en woon in Almere.", // review
     internship: "Op zoek naar een full stack stage vanaf februari 2027", // review
     workbenchLabel: "Op mijn werkbank:", // review
-    workbench: "[TODO: what’s on your workbench right now?]",
+    workbench: "De definitieve versie van mijn Spotify-afstandsbediening.", // review
     demoLink: "Probeer de LucaStars-demo", // review
     screenCaption: "Het now-playing-scherm van mijn Spotify-afstandsbediening, in de browser. De drie knoppen werken.", // review
     screenLink: "Zo heb ik de afstandsbediening gebouwd", // review
@@ -52,10 +52,6 @@ export default {
       label: "De afstandsbediening", // review
       alt: "Interactief 3D-model van de Spotify mini remote met het scherm en de drie knoppen", // review
     },
-    iphone: {
-      label: "Op een iPhone 16 Pro", // review
-      alt: "Interactief 3D-model van de Spotify mini remote op de achterkant van een iPhone 16 Pro", // review
-    },
   },
   media: {
     play: "Video afspelen", // review
@@ -68,14 +64,13 @@ export default {
       live: "Live website", // review
       github: "GitHub",
       private: "Code is privé (klantproject)", // review
+      school: "Schoolproject, dus de code kan niet gedeeld worden", // review
     },
     lucastars: {
       kind: "Schoolproject", // review
       story: [
-        "LucaStars is een digitale gamewinkel, gemaakt als schoolproject. Je kunt door de catalogus bladeren, aanbiedingen pakken, een winkelwagen vullen, afrekenen en je bestellingen terugzien op je profiel. [TODO: solo or team? If team, how many people and which parts did you build yourself?]", // review
-        "De winkelwagen telt btw op, trekt kortingen af en accepteert promocodes, en bij het afrekenen en later in de bestelgeschiedenis moet hetzelfde totaal uitkomen. [TODO: one constraint you worked within, for example a required stack, a deadline or the brief.]", // review
-        "[TODO: one decision you made and why, for example where the price calculation lives.]",
-        "[TODO: the result, for example the grade, feedback you got or what you would change now.]",
+        "LucaStars is een digitale gamewinkel, gemaakt als schoolproject. Je kunt door de catalogus bladeren, aanbiedingen pakken, een winkelwagen vullen, afrekenen en je bestellingen terugzien op je profiel. We waren met z’n vijven. Ik heb de winkelwagen, de games-API, het profielsysteem en de database gebouwd, en geholpen met het afrekenen.", // review
+        "De winkelwagen telt btw op, trekt kortingen af en accepteert promocodes, en bij het afrekenen en later in de bestelgeschiedenis moet hetzelfde totaal uitkomen.", // review
       ],
       tryIt:
         "Dit is een kleinere, nagebouwde versie van de winkel met voorbeelddata, die gewoon hier op de pagina draait. Leg een game in je winkelwagen, open het tabblad Discount code, vul LUCA10 in en plaats een bestelling. Die verschijnt onder My profile. Er wordt niets afgeschreven.", // review
@@ -83,29 +78,34 @@ export default {
     "spotify-remote": {
       kind: "Eigen hardwareproject, sinds 2026", // review
       story: [
-        "Een kleine afstandsbediening voor Spotify. Hij draait op een ESP32-C3 met een Sharp memory display en drie knoppen: afspelen/pauzeren, volgende en vorige. Het scherm laat zien wat er speelt. [TODO: why did you want to build it?]", // review
-        "Het eerste prototype heb ik in C++ geschreven met het Arduino-framework en PlatformIO, en getest in de Wokwi-simulator. [TODO: has it run on real hardware yet?]", // review
-        "[TODO: one constraint, for example the display size or power use.] [TODO: one decision you made and why, for example why a Sharp memory display.]",
+        "Een kleine afstandsbediening voor Spotify. Hij draait op een ESP32-C3 met een Sharp memory display en drie knoppen: afspelen/pauzeren, volgende en vorige. Het scherm laat zien wat er speelt. Ik wilde altijd al een iPod, omdat ik het fijn vind om een apart scherm voor mijn muziek te hebben. Ik heb al een kleine e-reader en wilde iets net zo kleins voor muziek, zodat ik in de bus of trein van nummer kan wisselen zonder mijn telefoon te pakken.", // review
+        "Het eerste prototype heb ik in C++ geschreven met het Arduino-framework en PlatformIO, en getest in de Wokwi-simulator. Daarna heb ik hem op een breadboard getest, en inmiddels zit het scherm vastgesoldeerd op de microcontroller. Hij zit nu in zijn eigen behuizing.", // review
+        "Ik wilde dat hij draagbaar was, met een batterij die langer meegaat dan die van een telefoon. Daarom koos ik een Sharp memory display: dat verbruikt heel weinig stroom, dus ik heb geen grotere batterij nodig en de hele afstandsbediening blijft klein.", // review
       ],
       media: {
-        alt: "",
-        placeholder: "[TODO: photo or short muted looping video of the real remote]",
+        case: {
+          alt: "De Spotify-afstandsbediening in een zwarte behuizing met structuur, met drie knoppen boven het scherm. Het scherm toont This Winter van innlet, met een pixelart-kat als hoes.", // review
+          caption: "Zo ver is hij nu: de afstandsbediening in zijn behuizing.", // review
+        },
+        breadboard: {
+          alt: "Video van het prototype op het breadboard. Een vinger drukt op de knoppen en het Sharp-scherm toont het nummer dat speelt.", // review
+          caption: "Het prototype op het breadboard, bediend met de knoppen.", // review
+        },
       },
     },
     "climate-impact-tool": {
       kind: "Schoolproject voor de gemeente Amsterdam, sinds 2026", // review
       story: [
-        "De gemeente Amsterdam heeft een tool voor klimaatimpact, en het is onze taak om die herbruikbaar te maken voor andere organisaties. [TODO: one sentence on what the tool does.] We zijn een team van vijf, en ik ben een van de twee full stack developers.", // review
+        "De gemeente Amsterdam heeft een tool voor klimaatimpact, en het is onze taak om die herbruikbaar te maken voor andere organisaties. Hij laat zien hoeveel klimaatimpact de bestanden in OneDrive hebben, en we willen mensen ook bewust maken van hoeveel hun opslag het klimaat beïnvloedt. We zijn een team van vijf, en ik ben een van de twee full stack developers.", // review
         "Ik heb onderzocht hoe we het als Microsoft Teams-app kunnen bouwen. Daarna hebben de andere developer en ik het samen ontworpen en gebouwd. Ik heb ook direct contact met de klant.", // review
-        "[TODO: one constraint, for example what a Teams app can and can’t do.] [TODO: one decision from your research and why.] [TODO: where the project stands now.]",
+        "De tool moest bestanden uit OneDrive verwijderen. Maar bij de gemeente Amsterdam mogen medewerkers vanwege de AVG geen documenten verwijderen. Daarom bedacht ik om de bestanden in plaats daarvan van OneDrive naar SharePoint te verplaatsen. Zo zijn er minder kopieën van elk document, en dat bespaart CO₂.", // review
       ],
     },
     "angels-treasure": {
       kind: "Freelance, sinds 2026", // review
       story: [
         "Angel’s Treasure is een kleine winkel in handgemaakte mode in Amsterdam die verkoopt via Vinted en Depop. Eerst heb ik mid-fi- en hi-fi-ontwerpen gemaakt, daarna een one-page site gebouwd in HTML, CSS en JavaScript met een productfilter en een formulier voor bestellingen op maat.", // review
-        "Ik heb Decap CMS ingericht zodat de eigenaar producten en markten kan toevoegen, en Netlify Forms voor het bestelformulier.", // review
-        "[TODO: one constraint, for example budget or hosting.] [TODO: why Decap CMS over other options?]",
+        "Ik heb Decap CMS ingericht zodat de eigenaar producten en markten kan toevoegen. Ik koos het omdat het makkelijk te gebruiken is zonder veel technische kennis. Netlify Forms regelt het bestelformulier.", // review
       ],
       media: {
         alt: "",
@@ -116,7 +116,7 @@ export default {
   about: {
     heading: "Over mij", // review
     photoAlt: "Portret van Flavio", // review
-    lead: "Naast mijn studie werk ik met hardware: Arduino- en ESP32-boards, solderen en mijn eigen homelab. [TODO: what runs on your home lab?] Ik spreek Spaans, Engels en Nederlands.", // review
+    lead: "Naast mijn studie werk ik met hardware: Arduino- en ESP32-boards, solderen en mijn eigen homelab. Ik spreek Spaans, Engels en Nederlands.", // review
     timeline: [
       {
         when: "Sinds sept. 2026", // review
@@ -133,7 +133,7 @@ export default {
   },
   contact: {
     heading: "Ik zoek een full stack stage vanaf februari 2027.", // review
-    text: "Mailen is de makkelijkste manier om me te bereiken. [TODO: where you can work, for example the Amsterdam area, hybrid or remote.]", // review
+    text: "Mailen is de makkelijkste manier om me te bereiken.", // review
     copy: "E-mail kopiëren", // review
     copied: "Gekopieerd", // review
     copyFailed: "Kopiëren lukte niet, selecteer het adres zelf", // review

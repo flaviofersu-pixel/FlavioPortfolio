@@ -6,51 +6,52 @@ export const person = {
   fullName: "Flavio Fernandez Suarez",
   phone: "+31 687154687",
   phoneHref: "tel:+31687154687",
-  email: "flaviofersu@gmail.com",
+  email: "flaviofersu1108@gmail.com",
   linkedin: "https://www.linkedin.com/in/flavio-fernandez-suarez-0a02a1398/",
   github: "https://github.com/flaviofersu-pixel",
   cv: "/cv-flavio-fernandez.pdf",
 };
 
 // Order matters: LucaStars gets the most space, the last two are shown smaller.
-// Text for each project is in src/i18n under projects.<id>. Link types: live, github, private.
+// Text for each project is in src/i18n under projects.<id>. Link types: live, github, private, school.
 // Anything in [TODO: ...] is highlighted on the page until you replace it.
 export const projects = [
   {
     id: "lucastars",
     name: "LucaStars",
-    tech: "[TODO: tech stack]",
-    links: [
-      { type: "live", href: "[TODO: url]" },
-      { type: "github", href: "[TODO: url]" },
-    ],
+    tech: "TypeScript (front end and back end), MySQL, HTML, CSS, Vite, Vitest, MVC, object-oriented programming",
+    links: [{ type: "school" }],
   },
   {
     id: "spotify-remote",
     name: "Spotify mini remote",
     tech: "C++, Arduino framework, PlatformIO, Wokwi",
     links: [{ type: "github", href: "[TODO: url]" }],
-    // Put the file in public/projects/, set src and type ("image" or "video"), and write the alt text in src/i18n.
-    media: { src: "", type: "video" },
+    // Files are in public/projects/. Alt text and captions are in src/i18n under media.<key>.
+    media: [
+      { key: "case", src: "/projects/spotify-remote-case.jpg", type: "image" },
+      {
+        key: "breadboard",
+        src: "/projects/spotify-remote.mp4",
+        poster: "/projects/spotify-remote-poster.jpg",
+        type: "video",
+      },
+    ],
     models: [
       { key: "remote", src: "/projects/spotify-gadget.glb" },
-      { key: "iphone", src: "/projects/spotify-gadget-iphone.glb" },
     ],
   },
   {
     id: "climate-impact-tool",
     name: "Climate impact tool for Microsoft Teams",
-    tech: "Microsoft Teams app, [TODO: tech stack]",
-    links: [{ type: "live", href: "[TODO: url]" }, { type: "private" }],
+    tech: "Microsoft Teams app, React, Vite, TypeScript, Microsoft Entra ID, Microsoft Graph, Fluent UI, Fluent UI charts",
+    links: [{ type: "school" }],
   },
   {
     id: "angels-treasure",
     name: "Angel’s Treasure website",
     tech: "HTML, CSS, JavaScript, Netlify Forms, Decap CMS",
-    links: [
-      { type: "live", href: "[TODO: url]" },
-      { type: "github", href: "[TODO: url]" },
-    ],
+    links: [{ type: "github", href: "[TODO: url]" }],
     // Put the screenshot in public/projects/, set src, and write the alt text in src/i18n.
     media: { src: "", type: "image" },
   },

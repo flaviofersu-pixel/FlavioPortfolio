@@ -22,7 +22,7 @@ export default {
     intro: "Estoy en segundo año de la carrera de Ingeniería de Software y vivo en Almere.", // review
     internship: "Busco prácticas full stack a partir de febrero de 2027", // review
     workbenchLabel: "En mi mesa de trabajo:", // review
-    workbench: "[TODO: what’s on your workbench right now?]",
+    workbench: "La versión final de mi control remoto de Spotify.", // review
     demoLink: "Prueba la demo de LucaStars", // review
     screenCaption: "La pantalla de reproducción de mi control remoto de Spotify, en el navegador. Los tres botones funcionan.", // review
     screenLink: "Cómo construí el control remoto", // review
@@ -52,10 +52,6 @@ export default {
       label: "El control remoto", // review
       alt: "Modelo 3D interactivo del Spotify mini remote con su pantalla y sus tres botones", // review
     },
-    iphone: {
-      label: "En un iPhone 16 Pro", // review
-      alt: "Modelo 3D interactivo del Spotify mini remote montado en la parte trasera de un iPhone 16 Pro", // review
-    },
   },
   media: {
     play: "Reproducir video", // review
@@ -68,14 +64,13 @@ export default {
       live: "Sitio web", // review
       github: "GitHub",
       private: "El código es privado (proyecto de cliente)", // review
+      school: "Proyecto académico, así que el código no se puede compartir", // review
     },
     lucastars: {
       kind: "Proyecto académico", // review
       story: [
-        "LucaStars es una tienda digital de videojuegos, hecha como proyecto académico. Puedes explorar el catálogo, aprovechar ofertas, llenar un carrito, pagar y ver tus pedidos anteriores en tu perfil. [TODO: solo or team? If team, how many people and which parts did you build yourself?]", // review
-        "El carrito suma el IVA, aplica descuentos y acepta códigos promocionales, y el total tiene que coincidir al pagar y después en el historial de pedidos. [TODO: one constraint you worked within, for example a required stack, a deadline or the brief.]", // review
-        "[TODO: one decision you made and why, for example where the price calculation lives.]",
-        "[TODO: the result, for example the grade, feedback you got or what you would change now.]",
+        "LucaStars es una tienda digital de videojuegos, hecha como proyecto académico. Puedes explorar el catálogo, aprovechar ofertas, llenar un carrito, pagar y ver tus pedidos anteriores en tu perfil. Éramos un equipo de cinco. Yo hice el carrito de compra, la API de juegos, el sistema de perfiles y la base de datos, y ayudé con el proceso de pago.", // review
+        "El carrito suma el IVA, aplica descuentos y acepta códigos promocionales, y el total tiene que coincidir al pagar y después en el historial de pedidos.", // review
       ],
       tryIt:
         "Esta es una versión más pequeña de la tienda con datos de ejemplo, que funciona aquí mismo en la página. Añade un juego al carrito, abre la pestaña Discount code, escribe LUCA10 y haz un pedido. Aparece en My profile. No se cobra nada.", // review
@@ -83,29 +78,34 @@ export default {
     "spotify-remote": {
       kind: "Proyecto personal de hardware, desde 2026", // review
       story: [
-        "Un pequeño control remoto para Spotify. Funciona con un ESP32-C3, una pantalla Sharp memory display y tres botones: reproducir/pausar, siguiente y anterior. La pantalla muestra lo que está sonando. [TODO: why did you want to build it?]", // review
-        "Escribí el primer prototipo en C++ con el framework de Arduino y PlatformIO, y lo probé en el simulador Wokwi. [TODO: has it run on real hardware yet?]", // review
-        "[TODO: one constraint, for example the display size or power use.] [TODO: one decision you made and why, for example why a Sharp memory display.]",
+        "Un pequeño control remoto para Spotify. Funciona con un ESP32-C3, una pantalla Sharp memory display y tres botones: reproducir/pausar, siguiente y anterior. La pantalla muestra lo que está sonando. Siempre quise un iPod, porque me gusta tener una pantalla aparte solo para mi música. Ya tengo un e-reader pequeño y quería algo igual de pequeño para la música, para cambiar de canción en el autobús o en el tren sin sacar el teléfono.", // review
+        "Escribí el primer prototipo en C++ con el framework de Arduino y PlatformIO, y lo probé en el simulador Wokwi. Después lo probé en una protoboard, y ahora la pantalla ya está soldada al microcontrolador. Y ya tiene su propia carcasa.", // review
+        "Quería que fuera portátil, con una batería que durara más que la de un teléfono. Por eso elegí una pantalla Sharp memory display: consume muy poca energía, así que no necesito una batería más grande y todo el control remoto sigue siendo pequeño.", // review
       ],
       media: {
-        alt: "",
-        placeholder: "[TODO: photo or short muted looping video of the real remote]",
+        case: {
+          alt: "El control remoto de Spotify en una carcasa negra con textura, con tres botones encima de la pantalla. La pantalla muestra This Winter de innlet, con un gato en pixel art como portada.", // review
+          caption: "Cómo está ahora: el control remoto en su carcasa.", // review
+        },
+        breadboard: {
+          alt: "Video del prototipo en la protoboard. Un dedo pulsa los botones y la pantalla Sharp muestra la canción que está sonando.", // review
+          caption: "El prototipo en la protoboard, controlado con sus botones.", // review
+        },
       },
     },
     "climate-impact-tool": {
       kind: "Proyecto académico para el Ayuntamiento de Ámsterdam, desde 2026", // review
       story: [
-        "El Ayuntamiento de Ámsterdam tiene una herramienta de impacto climático, y nuestro trabajo es hacerla reutilizable para otras organizaciones. [TODO: one sentence on what the tool does.] Somos un equipo de cinco y soy uno de los dos desarrolladores full stack.", // review
+        "El Ayuntamiento de Ámsterdam tiene una herramienta de impacto climático, y nuestro trabajo es hacerla reutilizable para otras organizaciones. Muestra cuánto impacto climático tienen los archivos guardados en OneDrive, y también queremos que la gente sea consciente de cuánto afecta su almacenamiento al clima. Somos un equipo de cinco y soy uno de los dos desarrolladores full stack.", // review
         "Investigué cómo construirla como app de Microsoft Teams. Después, junto con la otra persona del equipo de desarrollo, la diseñamos y construimos. También trabajo directamente con el cliente.", // review
-        "[TODO: one constraint, for example what a Teams app can and can’t do.] [TODO: one decision from your research and why.] [TODO: where the project stands now.]",
+        "La herramienta tenía que borrar archivos de OneDrive. Pero en el Ayuntamiento de Ámsterdam el personal no tiene permiso para borrar documentos por las normas del RGPD (AVG). Así que propuse mover los archivos de OneDrive a SharePoint en lugar de borrarlos. Así hay menos copias de cada documento, y eso ahorra CO₂.", // review
       ],
     },
     "angels-treasure": {
       kind: "Freelance, desde 2026", // review
       story: [
         "Angel’s Treasure es una pequeña tienda de moda hecha a mano en Ámsterdam que vende a través de Vinted y Depop. Primero hice diseños mid-fi y hi-fi, y después construí un sitio de una sola página en HTML, CSS y JavaScript con un filtro de productos y un formulario para pedidos personalizados.", // review
-        "Configuré Decap CMS para que quien lleva la tienda pueda añadir productos y mercadillos, y Netlify Forms para gestionar el formulario de pedidos.", // review
-        "[TODO: one constraint, for example budget or hosting.] [TODO: why Decap CMS over other options?]",
+        "Configuré Decap CMS para que quien lleva la tienda pueda añadir productos y mercadillos. Lo elegí porque es fácil de usar sin muchos conocimientos técnicos. Netlify Forms gestiona el formulario de pedidos.", // review
       ],
       media: {
         alt: "",
@@ -116,7 +116,7 @@ export default {
   about: {
     heading: "Sobre mí", // review
     photoAlt: "Retrato de Flavio", // review
-    lead: "Fuera de clase trabajo con hardware: placas Arduino y ESP32, soldadura y mi propio home lab. [TODO: what runs on your home lab?] Hablo español, inglés y neerlandés.", // review
+    lead: "Fuera de clase trabajo con hardware: placas Arduino y ESP32, soldadura y mi propio home lab. Hablo español, inglés y neerlandés.", // review
     timeline: [
       {
         when: "Desde sept. 2026", // review
@@ -133,7 +133,7 @@ export default {
   },
   contact: {
     heading: "Busco prácticas full stack a partir de febrero de 2027.", // review
-    text: "La forma más fácil de contactarme es por email. [TODO: where you can work, for example the Amsterdam area, hybrid or remote.]", // review
+    text: "La forma más fácil de contactarme es por email.", // review
     copy: "Copiar email", // review
     copied: "Copiado", // review
     copyFailed: "No se pudo copiar, selecciona la dirección", // review

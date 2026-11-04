@@ -13,7 +13,8 @@ function LoopingVideo({ src, poster, alt }) {
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
-    if (playing) video.play().catch(() => setPlaying(false));
+    // play() returns a promise in modern browsers, but nothing in some older ones and in jsdom.
+    if (playing) Promise.resolve(video.play()).catch(() => setPlaying(false));
     else video.pause();
   }, [playing]);
 
@@ -42,7 +43,7 @@ function LoopingVideo({ src, poster, alt }) {
 }
 
 // A photo, screenshot or video, or a highlighted placeholder until the file exists.
-export function MediaSlot({ media, alt, placeholder, className = "" }) {
+export function MediaSlot({ media, alt, caption, placeholder, className = "" }) {
   if (!media.src) {
     return (
       <div className={`grid aspect-video place-items-center border-2 border-dashed border-rule p-6 text-center ${className}`}>
@@ -58,6 +59,7 @@ export function MediaSlot({ media, alt, placeholder, className = "" }) {
       ) : (
         <img src={media.src} alt={alt} loading="lazy" className="block w-full border-2 border-ink" />
       )}
+      {caption ? <figcaption className="mt-2 text-ink-soft">{caption}</figcaption> : null}
     </figure>
   );
 }
