@@ -9,7 +9,8 @@ import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 const pad = (number) => String(number).padStart(2, "0");
 
 // An image that turns into a frame with the step name while the file doesn't exist yet.
-function StepImage({ src, alt, label, className = "" }) {
+// fit="contain" shows the whole image (letterboxed) instead of filling the frame.
+function StepImage({ src, alt, label, fit = "cover", className = "" }) {
   const [failed, setFailed] = useState(false);
   useEffect(() => setFailed(false), [src]);
 
@@ -25,7 +26,7 @@ function StepImage({ src, alt, label, className = "" }) {
       </span>
     );
   }
-  return <img src={src} alt={alt} onError={() => setFailed(true)} className={`h-full w-full object-cover ${className}`} />;
+  return <img src={src} alt={alt} onError={() => setFailed(true)} className={`h-full w-full ${fit === "contain" ? "bg-lcd object-contain" : "object-cover"} ${className}`} />;
 }
 
 // The finished remote with numbered dots on its parts. Dot positions are percentages of the photo.
@@ -218,9 +219,9 @@ export function BuildLog({ projectId, steps }) {
                       active ? "shadow-[0_0_0_2px_theme(colors.ink)]" : "group-hover:border-accent"
                     }`}
                   >
-                    <StepImage src={item.thumb ?? item.poster ?? item.src} alt="" label={title} />
+                    <StepImage src={item.thumb ?? item.poster ?? item.src} alt="" label={title} fit={item.thumbFit} />
                   </span>
-                  <span className={`mt-2 block font-pixel text-base ${active ? "text-accent" : "group-hover:text-accent"}`}>
+                  <span className={`mt-2 block whitespace-nowrap font-pixel text-sm sm:text-base ${active ? "text-accent" : "group-hover:text-accent"}`}>
                     {pad(index + 1)} {title}
                   </span>
                 </button>
