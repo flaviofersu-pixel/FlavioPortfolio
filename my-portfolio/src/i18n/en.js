@@ -86,25 +86,25 @@ export default {
         steps: {
           design: {
             title: "Design",
-            date: "[TODO: month] 2026",
-            text: "[TODO: why I made the 3D model first]",
+            date: "2026",
+            text: "A 3D model of the remote, with the screen and the three buttons.",
             alt: "Interactive 3D model of the Spotify mini remote with its display and three buttons",
           },
           breadboard: {
             title: "Breadboard",
-            date: "[TODO: month] 2026",
-            text: "I skipped the simulator and went straight to a breadboard with Arduino, the real screen and the buttons. [TODO: one thing that went wrong and how I fixed it]",
+            date: "2026",
+            text: "I skipped the simulator and went straight to a breadboard with Arduino, the real screen and the buttons.",
             alt: "Video of the breadboard prototype. A finger presses the buttons, and the Sharp display shows the song that’s playing.",
           },
           soldering: {
             title: "Soldering",
-            date: "[TODO: month] 2026",
-            text: "The screen is now soldered to the microcontroller. [TODO: one detail]",
+            date: "2026",
+            text: "The screen is now soldered to the microcontroller.",
             alt: "The Sharp memory display wired with coloured wires to the XIAO microcontroller inside the open case, with the USB-C port at the front.",
           },
           finished: {
             title: "Finished",
-            date: "[TODO: month] 2026",
+            date: "2026",
             text: "Where it is now: the remote in its own case, small enough to carry on the bus or the train.",
             alt: "The Spotify mini remote in a black textured case, with three buttons above the screen. The screen shows This Winter by innlet, with a pixel-art cat as the cover.",
           },
@@ -120,11 +120,11 @@ export default {
           },
           usbc: {
             name: "USB-C",
-            text: "[TODO]",
+            text: "",
           },
           case: {
             name: "The case",
-            text: "[TODO: how I made the case and what is inside]",
+            text: "",
           },
         },
       },
@@ -143,11 +143,6 @@ export default {
         "Angel’s Treasure is a small handmade fashion shop in Amsterdam that sells through Vinted and Depop. I made mid-fi and hi-fi designs first, then built a one-page site in HTML, CSS and JavaScript with a product filter and a custom order form.",
         "I set up Decap CMS so the owner can add products and markets. I chose it because it’s easy to use without much technical knowledge. Netlify Forms handles the order form.",
       ],
-      media: {
-        // Describe the screenshot once you add it (src goes in src/data/content.js).
-        alt: "",
-        placeholder: "[TODO: screenshot of the Angel’s Treasure site]",
-      },
     },
   },
   about: {

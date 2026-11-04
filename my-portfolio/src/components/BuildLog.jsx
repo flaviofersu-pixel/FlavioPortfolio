@@ -110,7 +110,7 @@ function PartsList({ step, base, activePart, onSelect }) {
                 </span>
                 <span className={active ? "font-semibold" : ""}>{t(`${base}.parts.${part.key}.name`)}</span>
               </button>
-              {active ? <p className="pb-4 pl-10 motion-safe:animate-fade">{withTodos(t(`${base}.parts.${part.key}.text`))}</p> : null}
+              {active && t(`${base}.parts.${part.key}.text`) ? <p className="pb-4 pl-10 motion-safe:animate-fade">{withTodos(t(`${base}.parts.${part.key}.text`))}</p> : null}
             </li>
           );
         })}

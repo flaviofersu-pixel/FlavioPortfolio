@@ -1,6 +1,5 @@
 // Dutch. Same keys as en.js; anything missing falls back to English.
 // Lines marked "// review" are translations Flavio hasn't proofread yet. Delete the marker once checked.
-// [TODO: ...] placeholders stay in English on purpose.
 export default {
   meta: {
     title: "Flavio Fernandez Suarez, full stack developer in opleiding", // review
@@ -86,25 +85,25 @@ export default {
         steps: {
           design: {
             title: "Ontwerp", // review
-            date: "[TODO: month] 2026",
-            text: "[TODO: why I made the 3D model first]",
+            date: "2026",
+            text: "Een 3D-model van de afstandsbediening, met het scherm en de drie knoppen.", // review
             alt: "Interactief 3D-model van de Spotify mini remote met het scherm en de drie knoppen", // review
           },
           breadboard: {
             title: "Breadboard", // review
-            date: "[TODO: month] 2026",
-            text: "Ik heb de simulator overgeslagen en ben meteen begonnen op een breadboard met Arduino, het echte scherm en de knoppen. [TODO: one thing that went wrong and how I fixed it]", // review
+            date: "2026",
+            text: "Ik heb de simulator overgeslagen en ben meteen begonnen op een breadboard met Arduino, het echte scherm en de knoppen.", // review
             alt: "Video van het prototype op het breadboard. Een vinger drukt op de knoppen en het Sharp-scherm toont het nummer dat speelt.", // review
           },
           soldering: {
             title: "Solderen", // review
-            date: "[TODO: month] 2026",
-            text: "Het scherm is nu vastgesoldeerd op de microcontroller. [TODO: one detail]", // review
+            date: "2026",
+            text: "Het scherm is nu vastgesoldeerd op de microcontroller.", // review
             alt: "Het Sharp memory display met gekleurde draden verbonden met de XIAO-microcontroller in de open behuizing, met de USB-C-poort aan de voorkant.", // review
           },
           finished: {
             title: "Klaar", // review
-            date: "[TODO: month] 2026",
+            date: "2026",
             text: "Zo ver is hij nu: de afstandsbediening in zijn eigen behuizing, klein genoeg om mee te nemen in de bus of de trein.", // review
             alt: "De Spotify-afstandsbediening in een zwarte behuizing met structuur, met drie knoppen boven het scherm. Het scherm toont This Winter van innlet, met een pixelart-kat als hoes.", // review
           },
@@ -120,11 +119,11 @@ export default {
           },
           usbc: {
             name: "USB-C", // review
-            text: "[TODO]",
+            text: "",
           },
           case: {
             name: "De behuizing", // review
-            text: "[TODO: how I made the case and what is inside]",
+            text: "",
           },
         },
       },
@@ -143,10 +142,6 @@ export default {
         "Angel’s Treasure is een kleine winkel in handgemaakte mode in Amsterdam die verkoopt via Vinted en Depop. Eerst heb ik mid-fi- en hi-fi-ontwerpen gemaakt, daarna een one-page site gebouwd in HTML, CSS en JavaScript met een productfilter en een formulier voor bestellingen op maat.", // review
         "Ik heb Decap CMS ingericht zodat de eigenaar producten en markten kan toevoegen. Ik koos het omdat het makkelijk te gebruiken is zonder veel technische kennis. Netlify Forms regelt het bestelformulier.", // review
       ],
-      media: {
-        alt: "",
-        placeholder: "[TODO: screenshot of the Angel’s Treasure site]",
-      },
     },
   },
   about: {

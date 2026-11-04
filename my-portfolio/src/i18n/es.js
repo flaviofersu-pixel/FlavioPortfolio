@@ -1,6 +1,5 @@
 // Spanish (neutral, tú). Same keys as en.js; anything missing falls back to English.
 // Lines marked "// review" are translations Flavio hasn't proofread yet. Delete the marker once checked.
-// [TODO: ...] placeholders stay in English on purpose.
 export default {
   meta: {
     title: "Flavio Fernandez Suarez, estudiante full stack", // review
@@ -86,25 +85,25 @@ export default {
         steps: {
           design: {
             title: "Diseño", // review
-            date: "[TODO: month] 2026",
-            text: "[TODO: why I made the 3D model first]",
+            date: "2026",
+            text: "Un modelo 3D del control remoto, con la pantalla y los tres botones.", // review
             alt: "Modelo 3D interactivo del Spotify mini remote con su pantalla y sus tres botones", // review
           },
           breadboard: {
             title: "Protoboard", // review
-            date: "[TODO: month] 2026",
-            text: "Me salté el simulador y fui directo a una protoboard con Arduino, la pantalla real y los botones. [TODO: one thing that went wrong and how I fixed it]", // review
+            date: "2026",
+            text: "Me salté el simulador y fui directo a una protoboard con Arduino, la pantalla real y los botones.", // review
             alt: "Video del prototipo en la protoboard. Un dedo pulsa los botones y la pantalla Sharp muestra la canción que está sonando.", // review
           },
           soldering: {
             title: "Soldadura", // review
-            date: "[TODO: month] 2026",
-            text: "La pantalla ya está soldada al microcontrolador. [TODO: one detail]", // review
+            date: "2026",
+            text: "La pantalla ya está soldada al microcontrolador.", // review
             alt: "La pantalla Sharp memory display conectada con cables de colores al microcontrolador XIAO dentro de la carcasa abierta, con el puerto USB-C delante.", // review
           },
           finished: {
             title: "Terminado", // review
-            date: "[TODO: month] 2026",
+            date: "2026",
             text: "Así está ahora: el control remoto en su propia carcasa, lo bastante pequeño para llevarlo en el autobús o en el tren.", // review
             alt: "El control remoto de Spotify en una carcasa negra con textura, con tres botones encima de la pantalla. La pantalla muestra This Winter de innlet, con un gato en pixel art como portada.", // review
           },
@@ -120,11 +119,11 @@ export default {
           },
           usbc: {
             name: "USB-C", // review
-            text: "[TODO]",
+            text: "",
           },
           case: {
             name: "La carcasa", // review
-            text: "[TODO: how I made the case and what is inside]",
+            text: "",
           },
         },
       },
@@ -143,10 +142,6 @@ export default {
         "Angel’s Treasure es una pequeña tienda de moda hecha a mano en Ámsterdam que vende a través de Vinted y Depop. Primero hice diseños mid-fi y hi-fi, y después construí un sitio de una sola página en HTML, CSS y JavaScript con un filtro de productos y un formulario para pedidos personalizados.", // review
         "Configuré Decap CMS para que quien lleva la tienda pueda añadir productos y mercadillos. Lo elegí porque es fácil de usar sin muchos conocimientos técnicos. Netlify Forms gestiona el formulario de pedidos.", // review
       ],
-      media: {
-        alt: "",
-        placeholder: "[TODO: screenshot of the Angel’s Treasure site]",
-      },
     },
   },
   about: {

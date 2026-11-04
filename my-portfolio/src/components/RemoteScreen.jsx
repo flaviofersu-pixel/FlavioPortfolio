@@ -259,7 +259,7 @@ export function RemoteScreen() {
   return (
     <div className="w-full max-w-xs">
       <div className="border-[10px] border-ink bg-lcd p-4 font-pixel">
-        {/* The real screen is in Spanish. TODO: check the paused text on the device. */}
+        {/* The real screen is in Spanish. */}
         <p lang="es" className="flex items-center gap-2 border-b-2 border-ink pb-2 text-base uppercase">
           <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" aria-hidden="true" shapeRendering="crispEdges">
             {playing ? glyphs.play : glyphs.pause}

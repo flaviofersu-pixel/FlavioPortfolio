@@ -14,7 +14,7 @@ export const person = {
 
 // Order matters: LucaStars gets the most space, the last two are shown smaller.
 // Text for each project is in src/i18n under projects.<id>. Link types: live, github, private, school.
-// Anything in [TODO: ...] is highlighted on the page until you replace it.
+// Anything in [TODO: ...] is highlighted on the page, so placeholders are easy to spot.
 export const projects = [
   {
     id: "lucastars",
@@ -26,7 +26,7 @@ export const projects = [
     id: "spotify-remote",
     name: "Spotify mini remote",
     tech: "C++, Arduino",
-    links: [{ type: "github", href: "[TODO: url]" }],
+    links: [{ type: "github", href: "https://github.com/flaviofersu-pixel/spotify-gadget" }],
     // The build log, in order. Texts and alt text are in src/i18n under projects.spotify-remote.buildLog.
     // type: "model" (3D, only loaded when the step opens), "video" or "image". thumb is the small frame
     // in the step row (small files in public/images/remote/thumbs/; defaults to poster, then src); thumbFit "contain" shows all of it. A missing file shows a frame with the step name.
@@ -76,9 +76,7 @@ export const projects = [
     id: "angels-treasure",
     name: "Angel’s Treasure website",
     tech: "HTML, CSS, JavaScript, Netlify Forms, Decap CMS",
-    links: [{ type: "github", href: "[TODO: url]" }],
-    // Put the screenshot in public/projects/, set src, and write the alt text in src/i18n.
-    media: { src: "", type: "image" },
+    links: [],
   },
 ];
 
