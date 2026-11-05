@@ -14,7 +14,6 @@ function Tech({ text, className = "" }) {
   );
 }
 
-// Real links become links; [TODO: ...] placeholders stay visible; entries without href are plain notes.
 function ProjectLinks({ links, className = "" }) {
   const { t } = useLanguage();
   if (!links.length) return null;

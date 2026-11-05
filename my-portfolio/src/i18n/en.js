@@ -21,7 +21,6 @@ export default {
     intro: "I’m in my second year of a software engineering degree, and I live in Almere.",
     internship: "Looking for a full stack internship from February 2027",
     workbenchLabel: "On my workbench:",
-    // Edit this line (in all three languages) whenever something new lands on the desk.
     workbench: "The final version of my Spotify mini remote.",
     demoLink: "Try the LucaStars demo",
     screenCaption: "The now-playing screen from my Spotify remote, in the browser. The buttons work: press play to hear the song.",

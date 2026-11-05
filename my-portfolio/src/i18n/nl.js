@@ -1,5 +1,3 @@
-// Dutch. Same keys as en.js; anything missing falls back to English.
-// Lines marked "// review" are translations Flavio hasn't proofread yet. Delete the marker once checked.
 export default {
   meta: {
     title: "Flavio Fernandez Suarez, full stack developer in opleiding", // review
