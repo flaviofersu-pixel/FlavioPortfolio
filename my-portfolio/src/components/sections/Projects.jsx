@@ -64,7 +64,7 @@ function LucaStars({ project }) {
             id={`${project.id}-title`}
             className="font-pixel text-[clamp(2.5rem,8vw,5.5rem)] font-medium leading-[0.95]"
           >
-            {project.name}
+            {t(`projects.${project.id}.name`)}
           </h3>
           <p className="mt-3 text-ink-soft">{t(`projects.${project.id}.kind`)}</p>
         </header>
@@ -75,7 +75,7 @@ function LucaStars({ project }) {
 
         <div className="max-w-[68ch] xl:pt-1">
           <p>{t(`projects.${project.id}.tryIt`)}</p>
-          <Tech text={project.tech} className="mt-6" />
+          <Tech text={t(`projects.${project.id}.tech`)} className="mt-6" />
           <ProjectLinks links={project.links} className="mt-4" />
         </div>
 
@@ -92,12 +92,12 @@ function SpotifyRemote({ project }) {
       <div className="border-t border-rule py-16 lg:py-24">
         <header>
           <h3 id={`${project.id}-title`} className="font-pixel text-[clamp(2.125rem,6vw,4rem)] font-medium leading-none">
-            {project.name}
+            {t(`projects.${project.id}.name`)}
           </h3>
           <p className="mt-3 text-ink-soft">{t(`projects.${project.id}.kind`)}</p>
         </header>
         <Prose paragraphs={t(`projects.${project.id}.story`)} className="mt-8" />
-        <Tech text={project.tech} className="mt-6" />
+        <Tech text={t(`projects.${project.id}.tech`)} className="mt-6" />
         <ProjectLinks links={project.links} className="mt-4" />
         <div className="mt-12 lg:mt-16">
           <BuildLog projectId={project.id} steps={project.buildLog} />
@@ -112,11 +112,11 @@ function SmallProject({ project }) {
   return (
     <article id={project.id} aria-labelledby={`${project.id}-title`} className="min-w-0">
       <h3 id={`${project.id}-title`} className="font-pixel text-3xl font-medium leading-tight lg:text-4xl">
-        {project.name}
+        {t(`projects.${project.id}.name`)}
       </h3>
       <p className="mt-2 text-ink-soft">{t(`projects.${project.id}.kind`)}</p>
       <Prose paragraphs={t(`projects.${project.id}.story`)} className="mt-6" />
-      <Tech text={project.tech} className="mt-6" />
+      <Tech text={t(`projects.${project.id}.tech`)} className="mt-6" />
       <ProjectLinks links={project.links} className="mt-4" />
       {project.media ? <ProjectMedia project={project} className="mt-10" /> : null}
     </article>

@@ -39,12 +39,13 @@ function CopyEmail() {
 }
 
 export function Contact() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const cv = person.cv[lang] ?? person.cv.en;
   const links = [
     { href: person.phoneHref, label: person.phone },
     { href: person.linkedin, label: "LinkedIn" },
     { href: person.github, label: "GitHub" },
-    { href: person.cv, label: t("contact.cv") },
+    { href: cv, label: t("contact.cv"), download: cv.slice(1) },
   ];
 
   return (
@@ -70,6 +71,7 @@ export function Contact() {
             <li key={link.href}>
               <a
                 href={link.href}
+                download={link.download}
                 className="inline-flex min-h-11 items-center underline decoration-rule decoration-2 underline-offset-4 hover:decoration-accent sm:min-h-0"
               >
                 {link.label}

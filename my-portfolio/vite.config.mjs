@@ -1,7 +1,8 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
+import { person } from "./src/data/content.js";
 import { codes, localizeHead } from "./src/i18n/languages.js";
 
 // Fills the head from src/i18n and writes build/en/, build/nl/ and build/es/index.html,
@@ -20,6 +21,12 @@ function localizedPages() {
       return localizeHead(html, "en", siteUrl, "/");
     },
     closeBundle() {
+      // A missing PDF would otherwise be answered with the home page, so the CV link would look fine but
+      // download a web page. Fail the build instead.
+      const missing = Object.values(person.cv).filter((path) => !existsSync(join(outDir, path)));
+      if (missing.length) {
+        throw new Error(`CV file missing: ${missing.map((path) => `public${path}`).join(", ")}. Add the missing file before building.`);
+      }
       const html = readFileSync(join(outDir, "index.html"), "utf8");
       for (const code of codes) {
         mkdirSync(join(outDir, code), { recursive: true });

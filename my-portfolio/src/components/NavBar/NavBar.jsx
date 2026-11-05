@@ -55,7 +55,7 @@ export function NavBar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="underline-offset-4 decoration-2 hover:underline hover:decoration-accent"
+                className="inline-flex min-h-11 items-center underline-offset-4 decoration-2 hover:underline hover:decoration-accent sm:min-h-0"
               >
                 {t(`nav.${link.key}`)}
               </a>

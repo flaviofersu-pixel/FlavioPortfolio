@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { projects } from "../data/content";
+import { codes, translate } from "../i18n/languages";
 import { BuildLog } from "./BuildLog";
 
 // The real viewer pulls in three.js; a stand-in is enough to see when it mounts.
@@ -63,7 +64,16 @@ test("dots and the parts list select the same part", () => {
   expect(screen.getByRole("button", { name: "Three buttons" })).toHaveAttribute("aria-pressed", "true");
   expect(screen.getByText("Previous, play/pause and next.")).toBeInTheDocument();
 
-  fireEvent.click(screen.getByRole("button", { name: "The case" }));
-  expect(screen.getByRole("button", { name: "4: The case" })).toHaveAttribute("aria-pressed", "true");
+  fireEvent.click(screen.getByRole("button", { name: "Sharp memory display" }));
+  expect(screen.getByRole("button", { name: "2: Sharp memory display" })).toHaveAttribute("aria-pressed", "true");
   expect(screen.getByRole("button", { name: "1: Three buttons" })).toHaveAttribute("aria-pressed", "false");
+});
+
+test("every part on the photo has text in every language, so no dot opens an empty entry", () => {
+  const parts = remote.buildLog.find((step) => step.parts).parts;
+  for (const lang of codes) {
+    for (const part of parts) {
+      expect(translate(lang, `projects.spotify-remote.buildLog.parts.${part.key}.text`), `${lang} ${part.key}`).toBeTruthy();
+    }
+  }
 });

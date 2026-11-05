@@ -1,5 +1,5 @@
 // English is the source. nl.js and es.js have the same keys.
-// Not translated anywhere: names, project names, tech names, the LucaStars demo and the remote's screen.
+// Not translated anywhere: personal names, the LucaStars demo and the remote's screen.
 export default {
   meta: {
     title: "Flavio Fernandez Suarez, full stack student",
@@ -24,7 +24,7 @@ export default {
     // Edit this line (in all three languages) whenever something new lands on the desk.
     workbench: "The final version of my Spotify mini remote.",
     demoLink: "Try the LucaStars demo",
-    screenCaption: "The now-playing screen from my Spotify remote, in the browser. The three buttons work.",
+    screenCaption: "The now-playing screen from my Spotify remote, in the browser. The buttons work: press play to hear the song.",
     screenLink: "How I built the remote",
   },
   remote: {
@@ -60,6 +60,8 @@ export default {
       school: "School project, so the code can’t be shared",
     },
     lucastars: {
+      name: "LucaStars",
+      tech: "TypeScript (front end and back end), MySQL, HTML, CSS, Vite, Vitest, MVC, object-oriented programming",
       kind: "School project",
       story: [
         "LucaStars is a digital game store, made as a school project. You can browse the catalog, pick up deals, fill a cart, check out and look back at your orders on your profile. We were a team of five. I built the shopping cart, the games API, the profile system and the database, and helped with the checkout.",
@@ -69,6 +71,8 @@ export default {
         "This is a smaller rebuild of the shop with sample data, running right here in the page. Add a game to your cart, open the Discount code tab, enter LUCA10 and place an order. It shows up under My profile. Nothing is charged.",
     },
     "spotify-remote": {
+      name: "Spotify mini remote",
+      tech: "C++, Arduino",
       kind: "Personal hardware project, since 2026",
       story: [
         "A small remote for Spotify. It runs on an ESP32-C3 with a Sharp memory display and three buttons: play/pause, next and previous. The screen shows what’s playing. I always wanted an iPod, because I like having a separate screen just for my music. I already have a small e-reader, and I wanted something just as small for music, so I can switch songs on the bus or the train without taking out my phone.",
@@ -118,26 +122,22 @@ export default {
             name: "Sharp memory display",
             text: "It uses very little power, so the battery does not need to be big.",
           },
-          usbc: {
-            name: "USB-C",
-            text: "",
-          },
-          case: {
-            name: "The case",
-            text: "",
-          },
         },
       },
     },
     "climate-impact-tool": {
+      name: "Climate impact tool",
+      tech: "React, TypeScript, Vite, Microsoft Entra ID (MSAL), Microsoft Graph, Fluent UI, Recharts, Vitest",
       kind: "School project for the City of Amsterdam, since 2026",
       story: [
-        "The City of Amsterdam has a climate impact tool, and our job is to make it reusable for other organizations. It shows how much climate impact the files stored in OneDrive have, and we also want to make people aware of how much their storage affects the climate. We’re a team of five, and I’m one of the two full stack developers.",
-        "I researched how to build it as a Microsoft Teams app. After that, the other developer and I designed and built it together. I also work with the client directly.",
-        "The tool was supposed to delete files from OneDrive. But at the City of Amsterdam, employees aren’t allowed to delete documents because of the GDPR (AVG) rules. So I came up with moving the files from OneDrive to SharePoint instead. That way there are fewer copies of each document, which saves CO₂.",
+        "The HvA has a dashboard in Teams that shows how much CO₂ the files in your OneDrive cost. The City of Amsterdam wants the same for its 20,000 employees, but can’t use it: it runs on the HvA’s own database, the calculation is old, and we couldn’t get the code. So our team of five is building a new version that other organizations can use too. I’m one of the two full stack developers.",
+        "Together with the other developer I worked out the technical approach: a React web app that scans your OneDrive through Microsoft Graph and calculates the energy use and CO₂ in the browser. Unlike the old dashboard, it scans every folder, not just the top ones. There’s no backend and no database, and the tool only reads file details like name, size and date, never what’s inside. The municipality’s privacy officer said that keeps the privacy risk small. Later it will run as a tab in Microsoft Teams.",
+        "The old dashboard told you to delete files you hadn’t changed in six months. At the municipality that isn’t allowed just like that: under the Archiefwet (Dutch archives law) many documents have to be kept for a set time. So our tool never says a file can go. It shows your biggest and oldest files, opens them in OneDrive and points to the retention rules.",
       ],
     },
     "angels-treasure": {
+      name: "Angel’s Treasure website",
+      tech: "HTML, CSS, JavaScript, Netlify Forms, Decap CMS",
       kind: "Freelance, since 2026",
       story: [
         "Angel’s Treasure is a small handmade fashion shop in Amsterdam that sells through Vinted and Depop. I made mid-fi and hi-fi designs first, then built a one-page site in HTML, CSS and JavaScript with a product filter and a custom order form.",

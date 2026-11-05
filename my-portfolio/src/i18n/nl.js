@@ -23,7 +23,7 @@ export default {
     workbenchLabel: "Op mijn werkbank:", // review
     workbench: "De definitieve versie van mijn Spotify-afstandsbediening.", // review
     demoLink: "Probeer de LucaStars-demo", // review
-    screenCaption: "Het now-playing-scherm van mijn Spotify-afstandsbediening, in de browser. De drie knoppen werken.", // review
+    screenCaption: "Het now-playing-scherm van mijn Spotify-afstandsbediening, in de browser. De knoppen werken: druk op afspelen om het nummer te horen.", // review
     screenLink: "Zo heb ik de afstandsbediening gebouwd", // review
   },
   remote: {
@@ -59,6 +59,8 @@ export default {
       school: "Schoolproject, dus de code kan niet gedeeld worden", // review
     },
     lucastars: {
+      name: "LucaStars",
+      tech: "TypeScript (front-end en back-end), MySQL, HTML, CSS, Vite, Vitest, MVC, objectgeoriënteerd programmeren", // review
       kind: "Schoolproject", // review
       story: [
         "LucaStars is een digitale gamewinkel, gemaakt als schoolproject. Je kunt door de catalogus bladeren, aanbiedingen pakken, een winkelwagen vullen, afrekenen en je bestellingen terugzien op je profiel. We waren met z’n vijven. Ik heb de winkelwagen, de games-API, het profielsysteem en de database gebouwd, en geholpen met het afrekenen.", // review
@@ -68,6 +70,8 @@ export default {
         "Dit is een kleinere, nagebouwde versie van de winkel met voorbeelddata, die gewoon hier op de pagina draait. Leg een game in je winkelwagen, open het tabblad Discount code, vul LUCA10 in en plaats een bestelling. Die verschijnt onder My profile. Er wordt niets afgeschreven.", // review
     },
     "spotify-remote": {
+      name: "Mini-afstandsbediening voor Spotify", // review
+      tech: "C++, Arduino",
       kind: "Eigen hardwareproject, sinds 2026", // review
       story: [
         "Een kleine afstandsbediening voor Spotify. Hij draait op een ESP32-C3 met een Sharp memory display en drie knoppen: afspelen/pauzeren, volgende en vorige. Het scherm laat zien wat er speelt. Ik wilde altijd al een iPod, omdat ik het fijn vind om een apart scherm voor mijn muziek te hebben. Ik heb al een kleine e-reader en wilde iets net zo kleins voor muziek, zodat ik in de bus of trein van nummer kan wisselen zonder mijn telefoon te pakken.", // review
@@ -87,7 +91,7 @@ export default {
             title: "Ontwerp", // review
             date: "2026",
             text: "Een 3D-model van de afstandsbediening, met het scherm en de drie knoppen.", // review
-            alt: "Interactief 3D-model van de Spotify mini remote met het scherm en de drie knoppen", // review
+            alt: "Interactief 3D-model van de mini-afstandsbediening voor Spotify, met het scherm en de drie knoppen", // review
           },
           breadboard: {
             title: "Breadboard", // review
@@ -117,26 +121,22 @@ export default {
             name: "Sharp memory display", // review
             text: "Het verbruikt heel weinig stroom, dus de batterij hoeft niet groot te zijn.", // review
           },
-          usbc: {
-            name: "USB-C", // review
-            text: "",
-          },
-          case: {
-            name: "De behuizing", // review
-            text: "",
-          },
         },
       },
     },
     "climate-impact-tool": {
+      name: "Klimaatimpacttool", // review
+      tech: "React, TypeScript, Vite, Microsoft Entra ID (MSAL), Microsoft Graph, Fluent UI, Recharts, Vitest",
       kind: "Schoolproject voor de gemeente Amsterdam, sinds 2026", // review
       story: [
-        "De gemeente Amsterdam heeft een tool voor klimaatimpact, en het is onze taak om die herbruikbaar te maken voor andere organisaties. Hij laat zien hoeveel klimaatimpact de bestanden in OneDrive hebben, en we willen mensen ook bewust maken van hoeveel hun opslag het klimaat beïnvloedt. We zijn een team van vijf, en ik ben een van de twee full stack developers.", // review
-        "Ik heb onderzocht hoe we het als Microsoft Teams-app kunnen bouwen. Daarna hebben de andere developer en ik het samen ontworpen en gebouwd. Ik heb ook direct contact met de klant.", // review
-        "De tool moest bestanden uit OneDrive verwijderen. Maar bij de gemeente Amsterdam mogen medewerkers vanwege de AVG geen documenten verwijderen. Daarom bedacht ik om de bestanden in plaats daarvan van OneDrive naar SharePoint te verplaatsen. Zo zijn er minder kopieën van elk document, en dat bespaart CO₂.", // review
+        "De HvA heeft een dashboard in Teams dat laat zien hoeveel CO₂ de bestanden in je OneDrive kosten. De gemeente Amsterdam wil hetzelfde voor haar 20.000 medewerkers, maar kan het niet gebruiken: het draait op de eigen database van de HvA, de berekening is verouderd en we konden de code niet krijgen. Daarom bouwen we met een team van vijf een nieuwe versie die ook andere organisaties kunnen gebruiken. Ik ben een van de twee full stack developers.", // review
+        "Samen met de andere developer heb ik de technische aanpak uitgewerkt: een React-webapp die je OneDrive via Microsoft Graph scant en het energieverbruik en de CO₂ in de browser berekent. Anders dan het oude dashboard scant hij elke map, niet alleen de bovenste. Er is geen backend en geen database, en de tool leest alleen bestandsgegevens zoals naam, grootte en datum, nooit wat erin staat. Volgens de privacyfunctionaris van de gemeente blijft het privacyrisico daardoor klein. Later draait hij als tabblad in Microsoft Teams.", // review
+        "Het oude dashboard zei dat je bestanden moest verwijderen die je zes maanden niet had gewijzigd. Bij de gemeente mag dat niet zomaar: volgens de Archiefwet moeten veel documenten een bepaalde tijd bewaard blijven. Daarom zegt onze tool nooit dat een bestand weg kan. Hij laat je grootste en oudste bestanden zien, opent ze in OneDrive en verwijst naar de bewaarregels.", // review
       ],
     },
     "angels-treasure": {
+      name: "Website van Angel’s Treasure", // review
+      tech: "HTML, CSS, JavaScript, Netlify Forms, Decap CMS",
       kind: "Freelance, sinds 2026", // review
       story: [
         "Angel’s Treasure is een kleine winkel in handgemaakte mode in Amsterdam die verkoopt via Vinted en Depop. Eerst heb ik mid-fi- en hi-fi-ontwerpen gemaakt, daarna een one-page site gebouwd in HTML, CSS en JavaScript met een productfilter en een formulier voor bestellingen op maat.", // review
